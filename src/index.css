@@ -5,7 +5,7 @@
   --color-primary-light: #489BB6;
   --color-cta: #E04D2E;
   --color-cta-text: #FFFFFF;
-  
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -14,10 +14,10 @@
     background-color: #FFFFFF;
     color: #0f172a;
   }
-  
+
   html {
     /* Lenis handles smooth scrolling, we disable native smooth scrolling to prevent conflicts */
-    scroll-behavior: initial; 
+    scroll-behavior: initial;
   }
 
   body {
