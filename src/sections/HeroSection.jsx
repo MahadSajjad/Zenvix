@@ -16,14 +16,14 @@ function MagneticCard({ children, className, depth = 15 }) {
   const handleMouseMove = (e) => {
     if (prefersReducedMotion) return;
     if (!ref.current) return;
-    
+
     // Simplify/disable on mobile devices by checking width
     if (window.innerWidth < 1024) return;
 
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     // Normalized distance from center (-1 to 1)
     const normalizedX = (e.clientX - centerX) / (rect.width / 2);
     const normalizedY = (e.clientY - centerY) / (rect.height / 2);
@@ -39,8 +39,8 @@ function MagneticCard({ children, className, depth = 15 }) {
 
   const translateX = useTransform(mouseXSpring, [-1, 1], [-depth, depth]);
   const translateY = useTransform(mouseYSpring, [-1, 1], [-depth, depth]);
-  const rotateX = useTransform(mouseYSpring, [-1, 1], [depth/2, -depth/2]);
-  const rotateY = useTransform(mouseXSpring, [-1, 1], [-depth/2, depth/2]);
+  const rotateX = useTransform(mouseYSpring, [-1, 1], [depth / 2, -depth / 2]);
+  const rotateY = useTransform(mouseXSpring, [-1, 1], [-depth / 2, depth / 2]);
 
   return (
     <motion.div
@@ -113,7 +113,7 @@ export function HeroSection() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-[2.75rem] sm:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-bold text-primary leading-[1.05] tracking-tight mb-8"
+              className="text-[2.75rem] sm:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-bold text-primary leading-[1.05] tracking-tight mb-8"
             >
               Architecting <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
@@ -132,7 +132,7 @@ export function HeroSection() {
             {/* Desktop CTA (Hidden on mobile) */}
             <motion.div variants={itemVariants} className="hidden lg:flex flex-row items-center gap-4">
               <Button variant="outline" className="px-8 py-4 text-[15px]">
-                Explore Services
+                About Zenvix
               </Button>
             </motion.div>
           </motion.div>
@@ -154,14 +154,14 @@ export function HeroSection() {
                   className="w-full h-full rounded-3xl bg-primary shadow-2xl overflow-hidden border border-white/10 flex flex-col"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent z-0" />
-  
+
                   {/* Browser/Editor Top Bar */}
                   <div className="relative z-10 w-full px-4 py-3 flex items-center gap-1.5 border-b border-white/10">
                     <div className="w-2.5 h-2.5 rounded-full bg-cta/80" />
                     <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                     <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                   </div>
-  
+
                   {/* Code Mockup Lines */}
                   <div className="relative z-10 p-5 flex flex-col gap-3">
                     <div className="w-[80%] h-2 rounded bg-white/20" />
@@ -181,7 +181,7 @@ export function HeroSection() {
                   className="w-full h-full rounded-3xl bg-primary-light/95 shadow-xl overflow-hidden backdrop-blur-md flex flex-col p-4"
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent z-0" />
-  
+
                   {/* Wireframe Layout Graphic */}
                   <div className="relative z-10 w-full h-full flex flex-col gap-3">
                     {/* Header */}
@@ -217,7 +217,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row lg:hidden items-center gap-4 w-full order-3 mt-0"
           >
             <Button variant="outline" className="w-full sm:w-auto px-8 py-4 text-[15px]">
-              Explore Services
+              About Zenvix
             </Button>
           </motion.div>
 

@@ -3,6 +3,8 @@ import Lenis from 'lenis';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { HeroSection } from './sections/HeroSection';
+import { ServicesSection } from './sections/ServicesSection';
+import { PortfolioPreviewSection } from './sections/PortfolioPreviewSection';
 
 function App() {
   useEffect(() => {
@@ -17,6 +19,8 @@ function App() {
       <Header />
       <main className="flex-grow">
         <HeroSection />
+        <ServicesSection />
+        <PortfolioPreviewSection />
       </main>
       <Footer />
     </div>
