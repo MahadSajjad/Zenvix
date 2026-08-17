@@ -94,16 +94,20 @@ export function ServicesSection() {
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight mb-6">
-                  Engineering digital ecosystems that drive compounding revenue.
+                  Turning search into growth.
                 </h2>
 
                 <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-md">
                   We don't just build websites or run ads. We combine architectural web development with data-driven marketing strategies to create digital engines that systematically grow your brand.
                 </p>
 
-                <Button variant="outline" className="w-full sm:w-auto px-8 text-white border-white/20 hover:bg-white !hover:text-primary">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full sm:w-auto px-8 py-3 rounded-md border-[1.5px] border-white/30 text-white font-medium transition-all duration-500 hover:bg-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                >
                   Explore Services
-                </Button>
+                </motion.button>
               </motion.div>
             </div>
           </div>
@@ -121,10 +125,10 @@ export function ServicesSection() {
                 <motion.div
                   key={service.id}
                   variants={itemVariants}
-                  className={`group relative bg-white border border-gray-200/80 rounded-2xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:border-gray-300 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1 ${service.colSpan}`}
+                  className={`group relative bg-slate-100 border border-slate-200 rounded-2xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:border-slate-300 hover:bg-white hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1 ${service.colSpan}`}
                 >
                   {/* Subtle Background Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
                   {/* Top: Number & Arrow */}
                   <div className="relative z-10 flex justify-between items-start mb-16 sm:mb-24">

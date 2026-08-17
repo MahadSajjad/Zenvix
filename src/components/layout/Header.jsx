@@ -16,6 +16,8 @@ const links = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = typeof window !== 'undefined' && window.location.pathname === '/';
+  const displayLinks = links.filter(link => !(isHome && link.name === 'Home'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +56,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {links.map((link) => (
+            {displayLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -100,7 +102,7 @@ export function Header() {
           >
             <div className="flex flex-col min-h-[100dvh] pt-28 px-6 pb-6">
               <nav className="flex flex-col gap-6 mt-4">
-                {links.map((link, i) => (
+                {displayLinks.map((link, i) => (
                   <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
@@ -123,7 +125,7 @@ export function Header() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                transition={{ delay: links.length * 0.05, duration: 0.3 }}
+                transition={{ delay: displayLinks.length * 0.05, duration: 0.3 }}
                 className="mt-auto pt-12 pb-8 md:hidden shrink-0"
               >
                 <Button variant="primary" className="w-full py-4 text-lg">

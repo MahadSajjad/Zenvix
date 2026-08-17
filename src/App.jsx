@@ -5,6 +5,10 @@ import { Footer } from './components/layout/Footer';
 import { HeroSection } from './sections/HeroSection';
 import { ServicesSection } from './sections/ServicesSection';
 import { PortfolioPreviewSection } from './sections/PortfolioPreviewSection';
+import { AboutPreviewSection } from './sections/AboutPreviewSection';
+import { ProcessSection } from './sections/ProcessSection';
+import { FAQSection } from './sections/FAQSection';
+import { ContactPreviewSection } from './sections/ContactPreviewSection';
 
 function App() {
   useEffect(() => {
@@ -21,6 +25,10 @@ function App() {
         <HeroSection />
         <ServicesSection />
         <PortfolioPreviewSection />
+        <AboutPreviewSection />
+        <ProcessSection />
+        <FAQSection />
+        <ContactPreviewSection />
       </main>
       <Footer />
     </div>

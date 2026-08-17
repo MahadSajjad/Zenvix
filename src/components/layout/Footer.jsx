@@ -30,8 +30,8 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white pt-20 pb-8 sm:pt-28 overflow-hidden mt-auto">
-      <Container>
+    <footer className="bg-gradient-to-b from-primary from-[30%] to-cta text-white pt-20 pb-8 sm:pt-28 overflow-hidden mt-auto">
+      <Container className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
