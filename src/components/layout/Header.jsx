@@ -37,16 +37,15 @@ export function Header() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 sm:px-6 pointer-events-none flex justify-center">
-        <header 
-          className={`pointer-events-auto w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5 transition-all duration-500 rounded-2xl border ${
-            isScrolled 
-              ? 'bg-white/70 backdrop-blur-2xl backdrop-saturate-150 border-white/60 shadow-[0_8px_32px_rgba(0,40,70,0.06)]' 
-              : 'bg-white/30 backdrop-blur-lg border-white/40 shadow-[0_4px_20px_rgba(0,0,0,0.01)]'
-          }`}
+        <header
+          className={`pointer-events-auto w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5 transition-all duration-500 rounded-2xl border ${isScrolled
+            ? 'bg-gradient-to-r from-gray-100/80 via-gray-100/80 via-[70%] to-primary backdrop-blur-xl border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
+            : 'bg-gradient-to-r from-gray-100/70 via-gray-100/70 via-[70%] to-primary backdrop-blur-lg border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
+            }`}
         >
           {/* Logo */}
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="text-2xl font-bold text-primary tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-opacity hover:opacity-80"
             aria-label="Zenvix Home"
           >
@@ -72,7 +71,7 @@ export function Header() {
             <Button variant="primary" className="hidden md:inline-flex text-[14px] px-6 py-2.5 shadow-sm hover:shadow-md">
               Let's Talk
             </Button>
-            
+
             <button
               className="lg:hidden p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -119,8 +118,8 @@ export function Header() {
                   </motion.div>
                 ))}
               </nav>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
