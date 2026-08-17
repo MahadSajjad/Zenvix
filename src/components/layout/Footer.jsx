@@ -47,7 +47,7 @@ export function Footer() {
             >
               Zenvix<span className="text-cta">.</span>
             </a>
-            <p className="text-white/80 max-w-sm text-[15px] leading-relaxed mb-6">
+            <p className="text-white/80 hover:text-white transition-colors duration-500 max-w-sm text-[15px] leading-relaxed mb-6">
               A premium digital agency crafting sophisticated digital experiences and driving measurable business growth.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-auto">
