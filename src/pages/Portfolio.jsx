@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { PortfolioCard } from '../components/ui/PortfolioCard';
 import { portfolioData } from '../data/portfolio';
@@ -130,34 +131,7 @@ export function Portfolio() {
       </section>
 
       {/* SECTION 6 — FINAL CTA */}
-      <section className="w-full py-16 lg:py-24 bg-white">
-        <Container>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row items-center justify-between gap-8 bg-primary p-10 lg:p-16 rounded-[2rem] shadow-sm"
-          >
-            <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                Have a project of your own?
-              </h2>
-              <p className="text-lg text-white/80">
-                Let's discuss your requirements and architect a high-performance digital solution for your brand.
-              </p>
-            </div>
-            
-            <div className="shrink-0 w-full md:w-auto">
-              <Link to="/contact">
-                <Button variant="cta" className="px-10 py-4 text-lg w-full md:w-auto">
-                  Let's Talk
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
+      <GlobalCTA />
     </>
   );
 }

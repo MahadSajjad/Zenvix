@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaTiktok, FaLinkedinIn } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
+import { services } from '../../data/services';
 
 const footerLinks = {
   company: [
@@ -12,17 +13,7 @@ const footerLinks = {
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
   ],
-  services: [
-    { name: 'Web Development', href: '/services' },
-    { name: 'On-Page SEO', href: '/services' },
-    { name: 'Off-Page SEO', href: '/services' },
-    { name: 'Content Marketing', href: '/services' },
-    { name: 'Social Media Marketing', href: '/services' },
-    { name: 'Keyword Research', href: '/services' },
-    { name: 'UI/UX Designing', href: '/services' },
-    { name: 'Graphic Designing', href: '/services' },
-    { name: 'Guest Posting & Link Building', href: '/services' },
-  ],
+
   resources: [
     { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
@@ -56,19 +47,16 @@ export function Footer() {
               A premium digital agency crafting sophisticated digital experiences and driving measurable business growth.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-auto">
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="WhatsApp">
+              <a href={`https://wa.me/+923156360381?text=Hello%2C%20I'm%20interested%20in%20your%20services%20and%20would%20like%20to%20know%20more.`} target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="WhatsApp">
                 <FaWhatsapp size={16} />
               </a>
               <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Instagram">
                 <FaInstagram size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Facebook">
+              <a href="https://www.facebook.com/zenvixseo" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Facebook">
                 <FaFacebookF size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="TikTok">
-                <FaTiktok size={16} />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/zenvix-seo/" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="LinkedIn">
                 <FaLinkedinIn size={16} />
               </a>
             </div>
@@ -94,13 +82,13 @@ export function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-3 text-white tracking-wide">Services</h3>
             <ul className="flex flex-col gap-2">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
+              {services.map((service) => (
+                <li key={service.id}>
                   <Link
-                    to={link.href}
+                    to={`/services#${service.id}`}
                     className="text-white/80 hover:text-white transition-colors duration-500 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm inline-block"
                   >
-                    {link.name}
+                    {service.title}
                   </Link>
                 </li>
               ))}

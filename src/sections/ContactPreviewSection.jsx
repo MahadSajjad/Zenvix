@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
+import { services } from '../data/services';
+import { submitContactForm } from '../services/contactService';
 
 export function ContactPreviewSection() {
   const [formState, setFormState] = useState({
@@ -25,28 +27,24 @@ export function ContactPreviewSection() {
       const isSelected = prev.service.includes(id);
       return {
         ...prev,
-        service: isSelected 
-          ? prev.service.filter(s => s !== id) 
+        service: isSelected
+          ? prev.service.filter(s => s !== id)
           : [...prev.service, id]
       };
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate network request for frontend demo purposes
-    setTimeout(() => {
-      setIsSubmitting(false);
+    if (formState.service.length === 0) {
+      // Basic validation for service
+      return;
+    }
+
+    const response = await submitContactForm(formState);
+    if (response.status === 'development_ready') {
       setIsSuccess(true);
-      
-      // Reset form after a delay
-      setTimeout(() => {
-        setIsSuccess(false);
-        setFormState({ name: '', email: '', phone: '', budget: '', service: [], message: '' });
-      }, 5000);
-    }, 1500);
+    }
   };
 
   const inputClasses = "w-full bg-white/5 border border-white/10 rounded-md px-4 py-3.5 text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all duration-300";
@@ -54,7 +52,7 @@ export function ContactPreviewSection() {
 
   return (
     <section className="relative w-full pt-24 lg:pt-32 pb-16 lg:pb-24 bg-primary overflow-hidden">
-      
+
       {/* Background subtle accent */}
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary-light/5 rounded-full blur-[100px]" />
@@ -62,7 +60,7 @@ export function ContactPreviewSection() {
 
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-          
+
           {/* Left Column: Context */}
           <div className="w-full lg:w-[45%] flex flex-col items-start">
             <motion.div
@@ -108,7 +106,7 @@ export function ContactPreviewSection() {
               className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10"
             >
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div>
@@ -158,26 +156,25 @@ export function ContactPreviewSection() {
 
                   {/* Budget Selection */}
                   <div>
-                    <label htmlFor="budget" className={labelClasses}>Budget in Mind *</label>
+                    <label htmlFor="budget" className={labelClasses}>Budget in Mind (Optional)</label>
                     <div className="relative">
                       <select
                         id="budget"
                         name="budget"
-                        required
                         value={formState.budget}
                         onChange={handleInputChange}
-                        className={`${inputClasses} appearance-none pr-12 [&>option]:bg-gray-900 [&>option]:text-white`}
+                        className={`${inputClasses} appearance-none pr-12 rounded-md [&>option]:bg-gray-900 [&>option]:text-white`}
                       >
                         <option value="" disabled className="text-gray-500">Select a budget...</option>
-                        <option value="<5k">Under $5,000</option>
-                        <option value="5k-10k">$5,000 - $10,000</option>
-                        <option value="10k-25k">$10,000 - $25,000</option>
-                        <option value="25k-50k">$25,000 - $50,000</option>
-                        <option value="50k+">$50,000+</option>
+                        <option value="<500">Under $500</option>
+                        <option value="500-1000">$500 - $1,000</option>
+                        <option value="1000-2000">$1,000 - $2,000</option>
+                        <option value="2000-3000">$2,000 - $3,000</option>
+                        <option value="3000+">$3,000+</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
                         <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
                     </div>
@@ -188,31 +185,22 @@ export function ContactPreviewSection() {
                 <div>
                   <label className={labelClasses}>Service Interested In *</label>
                   <div className="flex flex-wrap gap-2.5">
-                    {[
-                      { id: 'web-development', label: 'Web Development' },
-                      { id: 'seo', label: 'SEO' },
-                      { id: 'link-building', label: 'Link Building' },
-                      { id: 'content-marketing', label: 'Content' },
-                      { id: 'social-media', label: 'Social Media' },
-                      { id: 'paid-advertising', label: 'Paid Ads' },
-                      { id: 'other', label: 'Other' },
-                    ].map(s => (
+                    {[...services, { id: 'other', shortTitle: 'Other' }].map(s => (
                       <button
                         key={s.id}
                         type="button"
                         onClick={() => toggleService(s.id)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2 focus:ring-offset-[#004B64] ${
-                          formState.service.includes(s.id)
-                            ? 'bg-cta border-cta text-white shadow-md'
-                            : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
-                        }`}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cta focus:ring-offset-2 focus:ring-offset-[#004B64] ${formState.service.includes(s.id)
+                          ? 'bg-cta border-cta text-white shadow-md'
+                          : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
+                          }`}
                       >
-                        {s.label}
+                        {s.shortTitle || s.title}
                       </button>
                     ))}
                   </div>
                   {/* Hidden input to enforce HTML5 'required' validation if no service is selected */}
-                  <input type="text" className="sr-only" required value={formState.service.join(',')} onChange={() => {}} tabIndex={-1} />
+                  <input type="text" className="sr-only" required value={formState.service.join(',')} onChange={() => { }} tabIndex={-1} />
                 </div>
 
                 {/* Message */}
@@ -241,11 +229,10 @@ export function ContactPreviewSection() {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting || isSuccess}
-                    className={`w-full sm:w-auto px-10 py-4 rounded-md font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cta focus:ring-offset-primary flex justify-center items-center ${
-                      isSuccess 
-                        ? 'bg-green-600 text-white' 
-                        : 'bg-cta text-white hover:bg-[#c94124]'
-                    } ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
+                    className={`w-full sm:w-auto px-10 py-4 rounded-md font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cta focus:ring-offset-primary flex justify-center items-center ${isSuccess
+                      ? 'bg-green-600 text-white'
+                      : 'bg-cta text-white hover:bg-[#c94124]'
+                      } ${isSubmitting ? 'opacity-80 cursor-wait' : ''}`}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
@@ -256,20 +243,20 @@ export function ContactPreviewSection() {
                         Sending...
                       </span>
                     ) : isSuccess ? (
-                      "Inquiry Sent!"
+                      "Backend Pending"
                     ) : (
                       "Send Inquiry"
                     )}
                   </motion.button>
                 </div>
-                
+
               </form>
             </motion.div>
           </div>
 
         </div>
       </Container>
-      
+
     </section>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
 import { blogData } from '../data/blog';
@@ -179,34 +180,7 @@ export function Blog() {
       </section>
 
       {/* SECTION 5 — FINAL CTA */}
-      <section className="w-full py-16 lg:py-24 bg-gray-50 border-t border-gray-100">
-        <Container>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto"
-          >
-            <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary tracking-tight mb-4">
-                Have an idea worth building?
-              </h2>
-              <p className="text-lg text-gray-600">
-                Let's transition from theory to execution. Discuss your digital goals with our strategy team.
-              </p>
-            </div>
-            
-            <div className="shrink-0 w-full md:w-auto">
-              <Link to="/contact">
-                <Button variant="primary" className="px-10 py-4 text-lg w-full md:w-auto">
-                  Let's Talk
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
+      <GlobalCTA />
     </div>
   );
 }

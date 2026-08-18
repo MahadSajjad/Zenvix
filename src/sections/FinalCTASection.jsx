@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 export function FinalCTASection() {
   return (
@@ -50,9 +51,11 @@ export function FinalCTASection() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-                <Button variant="primary" className="w-full sm:w-auto px-10 py-4 text-lg">
-                  Let's Talk
-                </Button>
+                <Link to="/contact">
+                  <Button variant="primary" className="w-full sm:w-auto px-10 py-4 text-lg">
+                    Let's Talk
+                  </Button>
+                </Link>
                 
                 <a 
                   href="/portfolio" 

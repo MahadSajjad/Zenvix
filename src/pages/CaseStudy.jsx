@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { portfolioData } from '../data/portfolio';
 
 export function CaseStudy() {
@@ -158,18 +159,7 @@ export function CaseStudy() {
       </section>
 
       {/* NEXT PROJECT / CTA */}
-      <section className="py-20 lg:py-32 mt-10 bg-primary text-center">
-        <Container>
-          <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight mb-8">
-            Ready to start your own project?
-          </h2>
-          <Link to="/contact">
-            <Button variant="cta" className="px-10 py-4 text-lg">
-              Let's Talk
-            </Button>
-          </Link>
-        </Container>
-      </section>
+      <GlobalCTA />
     </article>
   );
 }

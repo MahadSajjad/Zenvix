@@ -2,57 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
+import { services } from '../data/services';
 
-const services = [
-  {
-    id: "01",
-    title: "On-Page SEO",
-    description: "Data-driven optimizations to your website's architecture, content, and code to dominate search rankings.",
-    colSpan: "md:col-span-2",
-  },
-  {
-    id: "02",
-    title: "Off-Page SEO",
-    description: "Strategic external campaigns to build domain authority, trust, and a powerful digital footprint.",
-    colSpan: "md:col-span-1",
-  },
-  {
-    id: "03",
-    title: "Keywords Research",
-    description: "In-depth market analysis to identify high-intent search terms that capture converting traffic.",
-    colSpan: "md:col-span-1",
-  },
-  {
-    id: "04",
-    title: "Web Development",
-    description: "High-performance, headless architectures built for speed, scalability, and seamless user experiences.",
-    colSpan: "md:col-span-2",
-  },
-  {
-    id: "05",
-    title: "UI & UX Designing",
-    description: "Intuitive, user-centric interfaces crafted to maximize engagement and optimize conversion rates.",
-    colSpan: "md:col-span-1",
-  },
-  {
-    id: "06",
-    title: "Graphic Designing",
-    description: "Striking visual identities and creative assets that communicate your brand's unique value.",
-    colSpan: "md:col-span-1",
-  },
-  {
-    id: "07",
-    title: "Content Writing",
-    description: "Compelling, SEO-optimized narratives that establish industry authority and nurture brand loyalty.",
-    colSpan: "md:col-span-1",
-  },
-  {
-    id: "08",
-    title: "Guest Posting & Link Building",
-    description: "High-quality outreach campaigns to secure authoritative backlinks and drive targeted referral traffic.",
-    colSpan: "md:col-span-1",
-  }
-];
+const getColSpan = (idx) => {
+  return idx === 0 ? "md:col-span-2" : "md:col-span-1";
+};
 
 export function ServicesSection() {
   const containerVariants = {
@@ -101,13 +56,15 @@ export function ServicesSection() {
                   We don't just build websites or run ads. We combine architectural web development with data-driven marketing strategies to create digital engines that systematically grow your brand.
                 </p>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-8 py-3 rounded-md border-[1.5px] border-white/30 text-white font-medium transition-all duration-500 hover:bg-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-                >
-                  Explore Services
-                </motion.button>
+                <Link to="/services">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full sm:w-auto px-8 py-3 rounded-md border-[1.5px] border-white/30 text-white font-medium transition-all duration-500 hover:bg-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                  >
+                    Explore Services
+                  </motion.button>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -121,42 +78,47 @@ export function ServicesSection() {
               viewport={{ once: true, margin: "-50px" }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
             >
-              {services.map((service) => (
+              {services.map((service, idx) => (
                 <motion.div
                   key={service.id}
                   variants={itemVariants}
-                  className={`group relative bg-slate-100 border border-slate-200 rounded-2xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:border-slate-300 hover:bg-white hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1 ${service.colSpan}`}
+                  className={getColSpan(idx)}
                 >
-                  {/* Subtle Background Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+                  <Link
+                    to={`/services#${service.id}`}
+                    className="group relative bg-slate-100 border border-slate-200 rounded-2xl p-8 lg:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:border-slate-300 hover:bg-white hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1 block h-full"
+                  >
+                    {/* Subtle Background Hover Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
-                  {/* Top: Number & Arrow */}
-                  <div className="relative z-10 flex justify-between items-start mb-16 sm:mb-24">
-                    <span className="text-4xl lg:text-5xl font-light text-gray-200 tracking-tighter transition-colors duration-500 group-hover:text-primary/20">
-                      {service.id}
-                    </span>
+                    {/* Top: Number & Arrow */}
+                    <div className="relative z-10 flex justify-between items-start mb-16 sm:mb-24">
+                      <span className="text-4xl lg:text-5xl font-light text-gray-200 tracking-tighter transition-colors duration-500 group-hover:text-primary/20">
+                        {service.number}
+                      </span>
 
-                    <div className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center bg-gray-50 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm group-hover:shadow-md group-hover:scale-110">
-                      <svg
-                        className="w-4 h-4 text-gray-400 group-hover:text-white transition-transform duration-500 group-hover:-rotate-45"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                      <div className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center bg-gray-50 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm group-hover:shadow-md group-hover:scale-110">
+                        <svg
+                          className="w-4 h-4 text-gray-400 group-hover:text-white transition-transform duration-500 group-hover:-rotate-45"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Bottom: Content */}
-                  <div className="relative z-10">
-                    <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 text-[15px] leading-relaxed max-w-sm">
-                      {service.description}
-                    </p>
-                  </div>
+                    {/* Bottom: Content */}
+                    <div className="relative z-10">
+                      <h3 className="text-xl sm:text-2xl font-bold text-primary mb-3 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 text-[15px] leading-relaxed max-w-sm">
+                        {service.description}
+                      </p>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

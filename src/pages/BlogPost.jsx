@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
 import { blogData } from '../data/blog';
 
@@ -153,28 +154,7 @@ export function BlogPost() {
       )}
 
       {/* FINAL CTA */}
-      <section className="py-20 bg-white border-t border-gray-100">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
-            <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary tracking-tight mb-4">
-                Have an idea worth building?
-              </h2>
-              <p className="text-lg text-gray-600">
-                Let's discuss how we can engineer a digital solution for your brand.
-              </p>
-            </div>
-            
-            <div className="shrink-0 w-full md:w-auto">
-              <Link to="/contact">
-                <Button variant="primary" className="px-10 py-4 text-lg w-full md:w-auto">
-                  Let's Talk
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <GlobalCTA />
     </article>
   );
 }

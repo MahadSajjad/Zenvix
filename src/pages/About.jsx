@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 
 const fadeIn = {
@@ -214,31 +215,7 @@ export function About() {
       </section>
 
       {/* SECTION 6 — FINAL CTA */}
-      <section className="w-full py-16 lg:py-24 bg-gray-50 border-t border-gray-200">
-        <Container>
-          <motion.div 
-            {...fadeIn}
-            className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white p-10 lg:p-16 rounded-3xl shadow-sm border border-gray-100"
-          >
-            <div className="max-w-xl text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary tracking-tight mb-4">
-                Let's build something meaningful.
-              </h2>
-              <p className="text-lg text-gray-600">
-                Ready to architect a high-performance digital presence? Let's discuss your objectives.
-              </p>
-            </div>
-            
-            <div className="shrink-0">
-              <Link to="/contact">
-                <Button variant="primary" className="px-10 py-4 text-lg w-full md:w-auto">
-                  Let's Talk
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
+      <GlobalCTA />
     </>
   );
 }

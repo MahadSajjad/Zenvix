@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 
@@ -198,9 +199,11 @@ export function ProcessSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-20 lg:mt-32 flex justify-center"
         >
-          <Button variant="outline" className="px-8 py-3">
-            Start a Project
-          </Button>
+          <Link to="/contact">
+            <Button variant="outline" className="px-8 py-3">
+              Start a Project
+            </Button>
+          </Link>
         </motion.div>
 
       </Container>

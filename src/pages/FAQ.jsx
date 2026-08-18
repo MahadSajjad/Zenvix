@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { FAQItem } from '../components/ui/FAQItem';
 import { faqData } from '../data/faqs';
@@ -110,27 +111,8 @@ export function FAQ() {
         </Container>
       </section>
 
-      {/* SECTION 3 — STILL HAVE QUESTIONS CTA */}
-      <section className="w-full py-20 lg:py-32 bg-gray-50 border-t border-gray-200">
-        <Container>
-          <motion.div 
-            {...fadeIn}
-            className="flex flex-col items-center text-center max-w-2xl mx-auto"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary tracking-tight mb-6">
-              Still have a question?
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-10">
-              Tell us what you're working on and we'll help you figure out the right next step for your digital strategy.
-            </p>
-            <Link to="/contact">
-              <Button variant="primary" className="px-10 py-4 text-lg">
-                Let's Talk
-              </Button>
-            </Link>
-          </motion.div>
-        </Container>
-      </section>
+      {/* SECTION 3 — CTA */}
+      <GlobalCTA />
     </div>
   );
 }

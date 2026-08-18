@@ -69,9 +69,11 @@ export function Header() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4 xl:gap-6">
-            <Button variant="primary" className="hidden md:inline-flex text-[14px] px-6 py-2.5 shadow-sm hover:shadow-md">
-              Let's Talk
-            </Button>
+            <Link to="/contact" className="hidden md:inline-flex">
+              <Button variant="primary" className="text-[14px] px-6 py-2.5 shadow-sm hover:shadow-md">
+                Let's Talk
+              </Button>
+            </Link>
 
             <button
               className="lg:hidden p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
@@ -127,9 +129,11 @@ export function Header() {
                 transition={{ delay: links.length * 0.05, duration: 0.3 }}
                 className="mt-auto pt-12 pb-8 md:hidden shrink-0"
               >
-                <Button variant="primary" className="w-full py-4 text-lg">
-                  Let's Talk
-                </Button>
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full">
+                  <Button variant="primary" className="w-full py-4 text-lg">
+                    Let's Talk
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

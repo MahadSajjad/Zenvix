@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 const faqData = [
   {
@@ -130,9 +131,11 @@ export function FAQSection() {
                   Find answers to common questions about our engagement process, methodology, and capabilities. Need something more specific?
                 </p>
 
-                <Button variant="primary" className="w-full sm:w-auto px-8 py-3">
-                  Contact Zenvix
-                </Button>
+                <Link to="/contact">
+                  <Button variant="primary" className="w-full sm:w-auto px-8 py-3">
+                    Contact Zenvix
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>
