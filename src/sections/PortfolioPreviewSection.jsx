@@ -1,46 +1,36 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
-
-// Placeholder for future WordPress REST API data structure
-const projects = [
-  {
-    id: "01",
-    title: "Global E-Commerce Replatforming",
-    category: "Web Development & SEO",
-    description: "Architected a headless commerce solution that improved conversion rates by 42% and organic traffic by 150%.",
-    slug: "global-ecommerce-replatforming",
-    colSpan: "md:col-span-2",
-    featured: true,
-    accentColor: "bg-primary",
-    image: "/images/image-1556742049-0cfed4f6a45d.jpg"
-  },
-  {
-    id: "02",
-    title: "FinTech App Interface",
-    category: "UI & UX Designing",
-    description: "Designed a frictionless, user-centric mobile banking experience for modern millennials.",
-    slug: "fintech-app-interface",
-    colSpan: "md:col-span-1",
-    featured: false,
-    accentColor: "bg-primary-light",
-    image: "/images/image-1561070791-2526d30994b5.jpg"
-  },
-  {
-    id: "03",
-    title: "SaaS Growth Engine",
-    category: "Content & SEO",
-    description: "Data-driven organic growth campaign scaling inbound enterprise leads.",
-    slug: "saas-growth-engine",
-    colSpan: "md:col-span-1",
-    featured: false,
-    accentColor: "bg-gray-800",
-    image: "/images/image-1460925895917-afdab827c52f.jpg"
-  }
-];
+import { usePortfolio } from '../hooks/usePortfolio';
 
 export function PortfolioPreviewSection() {
+  const { portfolio } = usePortfolio();
+
+  // Create layout metadata for the first 3 projects to preserve the masonry-like grid
+  const displayProjects = useMemo(() => {
+    return portfolio.slice(0, 3).map((project, index) => {
+      let colSpan = "md:col-span-1";
+      let featured = false;
+      let accentColor = "bg-gray-800";
+
+      if (index === 0) {
+        colSpan = "md:col-span-2";
+        featured = true;
+        accentColor = "bg-primary";
+      } else if (index === 1) {
+        accentColor = "bg-primary-light";
+      }
+
+      return {
+        ...project,
+        id: (index + 1).toString().padStart(2, '0'), // Fake ID for UI ("01", "02")
+        colSpan,
+        featured,
+        accentColor,
+      };
+    });
+  }, [portfolio]);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -108,7 +98,7 @@ export function PortfolioPreviewSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
         >
-          {projects.map((project) => (
+          {displayProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '../components/ui/Container';
-import { Button } from '../components/ui/Button';
+import { FiArrowRight } from 'react-icons/fi';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
@@ -21,7 +21,7 @@ export function Blog() {
 
   // Find the first featured post, or default to the newest post (first in array)
   const featuredPost = posts.find(post => post.featured) || posts[0];
-  
+
   // Filter remaining posts (exclude featured post if viewing "All", otherwise filter by category)
   const cataloguePosts = posts.filter(post => {
     if (activeCategory === "All") return post.id !== featuredPost?.id;
@@ -41,11 +41,11 @@ export function Blog() {
                   Insights
                 </span>
               </div>
-              
+
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] tracking-tight mb-8">
                 Ideas for building better digital experiences.
               </h1>
-              
+
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
                 Practical insights, technical perspectives, and strategic thinking on technology, design, SEO, and digital growth from the Zenvix team.
               </p>
@@ -58,18 +58,18 @@ export function Blog() {
       {featuredPost && activeCategory === "All" && (
         <section className="w-full pb-16 lg:pb-24">
           <Container>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Link 
+              <Link
                 to={`/blog/${featuredPost.slug}`}
                 className="group flex flex-col lg:flex-row bg-gray-50 rounded-[2rem] overflow-hidden border border-gray-100 hover:border-gray-200 transition-colors"
               >
                 {/* Visual Half */}
                 <div className="w-full lg:w-3/5 aspect-[16/9] lg:aspect-auto overflow-hidden bg-gray-100 relative">
-                  <motion.div 
+                  <motion.div
                     className="w-full h-full absolute inset-0"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
@@ -92,11 +92,11 @@ export function Blog() {
                       {featuredPost.category}
                     </span>
                   </div>
-                  
+
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight mb-6 group-hover:text-cta transition-colors">
                     {featuredPost.title}
                   </h2>
-                  
+
                   <p className="text-lg text-gray-600 leading-relaxed mb-8">
                     {featuredPost.excerpt}
                   </p>
@@ -106,7 +106,7 @@ export function Blog() {
                       <span className="text-sm font-bold text-primary">{featuredPost.author}</span>
                       <span className="text-sm text-gray-500">{featuredPost.date} • {featuredPost.readTime}</span>
                     </div>
-                    
+
                     <span className="inline-flex items-center gap-2 text-sm font-bold text-cta group-hover:translate-x-2 transition-transform">
                       Read Article <FiArrowRight />
                     </span>
@@ -126,11 +126,10 @@ export function Blog() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                  activeCategory === category 
-                    ? 'bg-primary text-white shadow-md' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
+                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeCategory === category
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
                 aria-pressed={activeCategory === category}
               >
                 {category}
@@ -152,14 +151,14 @@ export function Blog() {
                   ))}
                 </div>
               ) : (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className="py-32 text-center"
                 >
                   <p className="text-xl text-gray-500 mb-4">No articles found in this category.</p>
-                  <button 
+                  <button
                     onClick={() => setActiveCategory("All")}
                     className="text-primary font-bold hover:text-cta transition-colors"
                   >
