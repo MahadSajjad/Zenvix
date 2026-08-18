@@ -5,16 +5,7 @@ import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { PortfolioCard } from '../components/ui/PortfolioCard';
-import { portfolioData } from '../data/portfolio';
-
-const categories = [
-  "All",
-  "Web Development",
-  "UI/UX",
-  "Branding",
-  "SEO",
-  "Digital Marketing"
-];
+import { usePortfolio } from '../hooks/usePortfolio';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -23,11 +14,14 @@ const fadeIn = {
 };
 
 export function Portfolio() {
+  const { portfolio } = usePortfolio();
   const [activeCategory, setActiveCategory] = useState("All");
 
+  const categories = ["All", ...new Set(portfolio.map(p => p.category))];
+
   const filteredProjects = activeCategory === "All" 
-    ? portfolioData 
-    : portfolioData.filter(project => project.category === activeCategory);
+    ? portfolio 
+    : portfolio.filter(project => project.category === activeCategory);
 
   return (
     <>

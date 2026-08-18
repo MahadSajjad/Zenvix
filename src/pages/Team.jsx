@@ -5,7 +5,7 @@ import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { TeamMember } from '../components/ui/TeamMember';
-import { teamData } from '../data/team';
+import { useTeam } from '../hooks/useTeam';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -15,6 +15,7 @@ const fadeIn = {
 };
 
 export function Team() {
+  const { team: teamData } = useTeam();
   return (
     <>
       {/* SECTION 1 — TEAM HERO */}

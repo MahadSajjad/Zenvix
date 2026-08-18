@@ -5,11 +5,12 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
-import { portfolioData } from '../data/portfolio';
+import { usePortfolio } from '../hooks/usePortfolio';
 
 export function CaseStudy() {
   const { slug } = useParams();
-  const project = portfolioData.find(p => p.slug === slug);
+  const { portfolio } = usePortfolio();
+  const project = portfolio.find(p => p.slug === slug);
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
-import { services } from '../../data/services';
+import { useServices } from '../../hooks/useServices';
 
 const footerLinks = {
   company: [
@@ -25,6 +25,7 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const { services } = useServices();
   return (
     <footer className="bg-gradient-to-b from-primary from-[30%] to-cta text-white pt-20 pb-8 sm:pt-28 overflow-hidden mt-auto">
       <Container className="relative z-10">

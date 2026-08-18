@@ -6,7 +6,7 @@ import { Button } from '../components/ui/Button';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
-import { services as servicesData } from '../data/services';
+import { useServices } from '../hooks/useServices';
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -15,6 +15,7 @@ const fadeIn = {
 };
 
 export function Services() {
+  const { services: servicesData } = useServices();
   return (
     <>
       {/* SECTION 1 — SERVICES HERO */}

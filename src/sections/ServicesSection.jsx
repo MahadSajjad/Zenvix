@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { Link } from 'react-router-dom';
-import { services } from '../data/services';
+import { useServices } from '../hooks/useServices';
 
 const getColSpan = (idx) => {
   return idx === 0 ? "md:col-span-2" : "md:col-span-1";
 };
 
 export function ServicesSection() {
+  const { services } = useServices();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
-import { services } from '../data/services';
+import { useServices } from '../hooks/useServices';
 import { submitContactForm } from '../services/contactService';
 
 export function ContactPreviewSection() {
+  const { services } = useServices();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
