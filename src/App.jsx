@@ -10,6 +10,8 @@ import { Services } from './pages/Services';
 import { Portfolio } from './pages/Portfolio';
 import { CaseStudy } from './pages/CaseStudy';
 import { Team } from './pages/Team';
+import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { PageTransition } from './components/common/PageTransition';
 
@@ -26,6 +28,8 @@ function AppRoutes() {
         <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
         <Route path="/portfolio/:slug" element={<PageTransition><CaseStudy /></PageTransition>} />
         <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         {/* Future routes can be added here */}
       </Routes>
     </AnimatePresence>
