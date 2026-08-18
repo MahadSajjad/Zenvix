@@ -6,7 +6,7 @@ import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
-import { blogData } from '../data/blog';
+import { useBlog } from '../hooks/useBlog';
 
 // Helper to render the structured JSON content model safely
 const renderContentBlock = (block, index) => {
@@ -29,7 +29,8 @@ const renderContentBlock = (block, index) => {
 
 export function BlogPost() {
   const { slug } = useParams();
-  const post = blogData.find(p => p.slug === slug);
+  const { posts } = useBlog();
+  const post = posts.find(p => p.slug === slug);
 
   // 404 State
   if (!post) {
@@ -51,7 +52,7 @@ export function BlogPost() {
   // Related Articles Logic
   // 1. Filter out current post
   // 2. Prioritize same category
-  const otherPosts = blogData.filter(p => p.id !== post.id);
+  const otherPosts = posts.filter(p => p.id !== post.id);
   const sameCategoryPosts = otherPosts.filter(p => p.category === post.category);
   const differentCategoryPosts = otherPosts.filter(p => p.category !== post.category);
   
@@ -126,7 +127,9 @@ export function BlogPost() {
       <section className="py-16 lg:py-24">
         <Container>
           <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-primary prose-a:text-cta hover:prose-a:text-primary">
-            {post.content && post.content.length > 0 ? (
+            {typeof post.content === 'string' ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            ) : post.content && post.content.length > 0 ? (
               post.content.map((block, index) => renderContentBlock(block, index))
             ) : (
               <p className="text-gray-500 italic text-center py-20">Content coming soon. This structure is ready for WordPress REST API integration.</p>

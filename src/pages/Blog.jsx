@@ -5,18 +5,7 @@ import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
-import { blogData } from '../data/blog';
-import { FiArrowRight } from 'react-icons/fi';
-
-const categories = [
-  "All",
-  "Web Development",
-  "SEO",
-  "Digital Marketing",
-  "UI/UX",
-  "Branding",
-  "Business"
-];
+import { useBlog } from '../hooks/useBlog';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -25,12 +14,16 @@ const fadeIn = {
 };
 
 export function Blog() {
+  const { posts } = useBlog();
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const featuredPost = blogData.find(post => post.featured);
+  const categories = ["All", ...new Set(posts.map(p => p.category))];
+
+  // Find the first featured post, or default to the newest post (first in array)
+  const featuredPost = posts.find(post => post.featured) || posts[0];
   
   // Filter remaining posts (exclude featured post if viewing "All", otherwise filter by category)
-  const cataloguePosts = blogData.filter(post => {
+  const cataloguePosts = posts.filter(post => {
     if (activeCategory === "All") return post.id !== featuredPost?.id;
     return post.category === activeCategory;
   });
@@ -61,7 +54,7 @@ export function Blog() {
         </Container>
       </section>
 
-      {/* SECTION 2 — FEATURED ARTICLE */}
+      {/* SECTION 2 — FEATURED POST */}
       {featuredPost && activeCategory === "All" && (
         <section className="w-full pb-16 lg:pb-24">
           <Container>
