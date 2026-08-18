@@ -14,7 +14,7 @@ const projects = [
     colSpan: "md:col-span-2",
     featured: true,
     accentColor: "bg-primary",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600"
+    image: "/images/image-1556742049-0cfed4f6a45d.jpg"
   },
   {
     id: "02",
@@ -25,7 +25,7 @@ const projects = [
     colSpan: "md:col-span-1",
     featured: false,
     accentColor: "bg-primary-light",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1600"
+    image: "/images/image-1561070791-2526d30994b5.jpg"
   },
   {
     id: "03",
@@ -36,7 +36,7 @@ const projects = [
     colSpan: "md:col-span-1",
     featured: false,
     accentColor: "bg-gray-800",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600"
+    image: "/images/image-1460925895917-afdab827c52f.jpg"
   }
 ];
 

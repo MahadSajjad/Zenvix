@@ -9,7 +9,7 @@ export const blogData = [
     date: "Aug 15, 2026",
     readTime: "5 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1504868584819-f8e8b4b6d7e3.jpg",
     placeholderType: "technical",
     placeholderColors: "bg-primary text-white",
     content: [
@@ -55,7 +55,7 @@ export const blogData = [
     date: "Aug 10, 2026",
     readTime: "4 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1551288049-bebda4e38f71.jpg",
     placeholderType: "chart",
     placeholderColors: "bg-gray-100 text-primary",
     content: [
@@ -92,7 +92,7 @@ export const blogData = [
     date: "Aug 05, 2026",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1558655146-d09347e92766.jpg",
     placeholderType: "typography",
     placeholderColors: "bg-gray-900 text-gray-100",
     content: [
@@ -121,7 +121,7 @@ export const blogData = [
     date: "Jul 28, 2026",
     readTime: "4 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1581291518857-4e27b48ff24e.jpg",
     placeholderType: "wireframe",
     placeholderColors: "bg-primary-light text-white",
     content: [
@@ -150,7 +150,7 @@ export const blogData = [
     date: "Jul 21, 2026",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1552664730-d307ca884978.jpg",
     placeholderType: "chart",
     placeholderColors: "bg-cta text-white",
     content: [
@@ -170,7 +170,7 @@ export const blogData = [
     date: "Jul 15, 2026",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600",
+    image: "/images/image-1522071820081-009f0129c71c.jpg",
     placeholderType: "technical",
     placeholderColors: "bg-gray-100 text-primary",
     content: [
