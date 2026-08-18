@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import { Container } from '../ui/Container';
-import { Button } from '../ui/Button';
 import { useServices } from '../../hooks/useServices';
 
 const footerLinks = {
@@ -59,6 +58,9 @@ export function Footer() {
               </a>
               <a href="https://www.linkedin.com/company/zenvix-seo/" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="LinkedIn">
                 <FaLinkedinIn size={16} />
+              </a>
+              <a href="mailto:info@zenvix.net" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Email">
+                <FaEnvelope size={16} />
               </a>
             </div>
           </div>

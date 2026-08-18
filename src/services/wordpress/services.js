@@ -1,5 +1,12 @@
 import { wpFetch } from '../../lib/wordpress';
 
+const decodeHtmlEntities = (text) => {
+  if (!text) return '';
+  const textArea = document.createElement('textarea');
+  textArea.innerHTML = text;
+  return textArea.value;
+};
+
 /**
  * Normalizes a WordPress service object for the frontend
  */
@@ -13,11 +20,13 @@ export function normalizeService(wpService, index) {
     .map(item => item.trim())
     .filter(Boolean);
 
+  const decodedTitle = decodeHtmlEntities(wpService.title?.rendered || '');
+
   return {
     id: wpService.slug,
     wpId: wpService.id,
-    title: wpService.title?.rendered || '',
-    shortTitle: wpService.title?.rendered || '',
+    title: decodedTitle,
+    shortTitle: decodedTitle,
     description: wpService.acf?.short_description || '',
     content: wpService.content?.rendered || '',
     capabilities: capabilities,

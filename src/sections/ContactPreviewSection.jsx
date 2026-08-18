@@ -66,6 +66,17 @@ export function ContactPreviewSection() {
 
     if (response.status === 'success') {
       setIsSuccess(true);
+      setFormState({
+        name: '',
+        email: '',
+        phone: '',
+        budget: '',
+        service: [],
+        message: '',
+        _honey_pot_field: ''
+      });
+      // Optionally, clear the success message after some time
+      // setTimeout(() => setIsSuccess(false), 8000);
     } else {
       setApiError(response.message);
       if (response.errors) {
@@ -133,6 +144,12 @@ export function ContactPreviewSection() {
               className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10"
             >
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+
+                {isSuccess && (
+                  <div className="p-4 rounded-md bg-green-500/10 border border-green-500/20">
+                    <p className="text-sm text-green-400 font-medium">Thanks — your message has been received. We'll be in touch soon.</p>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
@@ -293,7 +310,7 @@ export function ContactPreviewSection() {
                         Sending...
                       </span>
                     ) : isSuccess ? (
-                      "Backend Pending"
+                      "Message Sent"
                     ) : (
                       "Send Inquiry"
                     )}
