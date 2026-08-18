@@ -12,11 +12,14 @@ export function ContactPreviewSection() {
     phone: '',
     budget: '',
     service: [],
-    message: ''
+    message: '',
+    _honey_pot_field: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [apiError, setApiError] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,14 +40,40 @@ export function ContactPreviewSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setApiError(null);
+    setFieldErrors({});
+    
     if (formState.service.length === 0) {
-      // Basic validation for service
+      setFieldErrors({ service: 'Please select at least one service.' });
       return;
     }
 
-    const response = await submitContactForm(formState);
-    if (response.status === 'development_ready') {
+    setIsSubmitting(true);
+    
+    // Map service IDs back to service names for the backend if needed,
+    // actually our form stores IDs in `service` array. Let's send names so validation passes.
+    // The existing validation checks against: 'Under $500', etc.
+    const selectedServices = formState.service.map(id => {
+      const s = services.find(srv => srv.id === id);
+      return s ? s.title : id;
+    });
+
+    const payload = {
+      ...formState,
+      service: selectedServices
+    };
+
+    const response = await submitContactForm(payload);
+    
+    setIsSubmitting(false);
+
+    if (response.status === 'success') {
       setIsSuccess(true);
+    } else {
+      setApiError(response.message);
+      if (response.errors) {
+        setFieldErrors(response.errors);
+      }
     }
   };
 
@@ -120,8 +149,9 @@ export function ContactPreviewSection() {
                       value={formState.name}
                       onChange={handleInputChange}
                       placeholder="John Doe"
-                      className={inputClasses}
+                      className={`${inputClasses} ${fieldErrors.name ? 'border-red-500/50 focus:border-red-500/80 focus:ring-red-500/30' : ''}`}
                     />
+                    {fieldErrors.name && <p className="mt-2 text-sm text-red-400">{fieldErrors.name}</p>}
                   </div>
 
                   {/* Email */}
@@ -135,8 +165,9 @@ export function ContactPreviewSection() {
                       value={formState.email}
                       onChange={handleInputChange}
                       placeholder="john@company.com"
-                      className={inputClasses}
+                      className={`${inputClasses} ${fieldErrors.email ? 'border-red-500/50 focus:border-red-500/80 focus:ring-red-500/30' : ''}`}
                     />
+                    {fieldErrors.email && <p className="mt-2 text-sm text-red-400">{fieldErrors.email}</p>}
                   </div>
                 </div>
 
@@ -167,11 +198,11 @@ export function ContactPreviewSection() {
                         className={`${inputClasses} appearance-none pr-12 rounded-md [&>option]:bg-gray-900 [&>option]:text-white`}
                       >
                         <option value="" disabled className="text-gray-500">Select a budget...</option>
-                        <option value="<500">Under $500</option>
-                        <option value="500-1000">$500 - $1,000</option>
-                        <option value="1000-2000">$1,000 - $2,000</option>
-                        <option value="2000-3000">$2,000 - $3,000</option>
-                        <option value="3000+">$3,000+</option>
+                        <option value="Under $500">Under $500</option>
+                        <option value="$500 - $1,000">$500 - $1,000</option>
+                        <option value="$1,000 - $2,000">$1,000 - $2,000</option>
+                        <option value="$2,000 - $3,000">$2,000 - $3,000</option>
+                        <option value="$3,000+">$3,000+</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
                         <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,6 +210,7 @@ export function ContactPreviewSection() {
                         </svg>
                       </div>
                     </div>
+                    {fieldErrors.budget && <p className="mt-2 text-sm text-red-400">{fieldErrors.budget}</p>}
                   </div>
                 </div>
 
@@ -202,6 +234,7 @@ export function ContactPreviewSection() {
                   </div>
                   {/* Hidden input to enforce HTML5 'required' validation if no service is selected */}
                   <input type="text" className="sr-only" required value={formState.service.join(',')} onChange={() => { }} tabIndex={-1} />
+                  {fieldErrors.service && <p className="mt-2 text-sm text-red-400">{fieldErrors.service}</p>}
                 </div>
 
                 {/* Message */}
@@ -215,9 +248,28 @@ export function ContactPreviewSection() {
                     value={formState.message}
                     onChange={handleInputChange}
                     placeholder="Tell us about your project goals, timeline, or current challenges..."
-                    className={`${inputClasses} resize-none`}
+                    className={`${inputClasses} resize-none ${fieldErrors.message ? 'border-red-500/50 focus:border-red-500/80 focus:ring-red-500/30' : ''}`}
                   />
+                  {fieldErrors.message && <p className="mt-2 text-sm text-red-400">{fieldErrors.message}</p>}
                 </div>
+
+                {/* Honeypot field (hidden from users, stops automated bots) */}
+                <input
+                  type="text"
+                  name="_honey_pot_field"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState._honey_pot_field}
+                  onChange={handleInputChange}
+                  className="sr-only"
+                  aria-hidden="true"
+                />
+
+                {apiError && (
+                  <div className="p-4 rounded-md bg-red-500/10 border border-red-500/20">
+                    <p className="text-sm text-red-400 font-medium">{apiError}</p>
+                  </div>
+                )}
 
                 {/* Submit Area */}
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-6">
