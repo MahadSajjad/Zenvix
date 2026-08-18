@@ -9,7 +9,7 @@ export const blogData = [
     date: "Aug 15, 2026",
     readTime: "5 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "technical",
     placeholderColors: "bg-primary text-white",
     content: [
@@ -55,7 +55,7 @@ export const blogData = [
     date: "Aug 10, 2026",
     readTime: "4 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "chart",
     placeholderColors: "bg-gray-100 text-primary",
     content: [
@@ -92,7 +92,7 @@ export const blogData = [
     date: "Aug 05, 2026",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "typography",
     placeholderColors: "bg-gray-900 text-gray-100",
     content: [
@@ -121,7 +121,7 @@ export const blogData = [
     date: "Jul 28, 2026",
     readTime: "4 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "wireframe",
     placeholderColors: "bg-primary-light text-white",
     content: [
@@ -150,7 +150,7 @@ export const blogData = [
     date: "Jul 21, 2026",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "chart",
     placeholderColors: "bg-cta text-white",
     content: [
@@ -170,7 +170,7 @@ export const blogData = [
     date: "Jul 15, 2026",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600",
     placeholderType: "technical",
     placeholderColors: "bg-gray-100 text-primary",
     content: [
