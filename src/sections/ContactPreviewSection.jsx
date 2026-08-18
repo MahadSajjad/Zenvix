@@ -42,14 +42,14 @@ export function ContactPreviewSection() {
     e.preventDefault();
     setApiError(null);
     setFieldErrors({});
-    
+
     if (formState.service.length === 0) {
       setFieldErrors({ service: 'Please select at least one service.' });
       return;
     }
 
     setIsSubmitting(true);
-    
+
     // Map service IDs back to service names for the backend if needed,
     // actually our form stores IDs in `service` array. Let's send names so validation passes.
     // The existing validation checks against: 'Under $500', etc.
@@ -64,7 +64,7 @@ export function ContactPreviewSection() {
     };
 
     const response = await submitContactForm(payload);
-    
+
     setIsSubmitting(false);
 
     if (response.status === 'success') {
@@ -118,8 +118,8 @@ export function ContactPreviewSection() {
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col">
                   <span className="text-sm text-primary-light font-medium mb-1">Email Us</span>
-                  <a href="mailto:hello@zenvix.com" className="text-white text-lg hover:text-cta transition-colors duration-300">
-                    hello@zenvix.com
+                  <a href="mailto:info@zenvix.net" className="text-white text-lg hover:text-cta transition-colors duration-300">
+                    info@zenvix.net
                   </a>
                 </div>
               </div>
