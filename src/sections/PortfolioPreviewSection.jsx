@@ -13,7 +13,8 @@ const projects = [
     slug: "global-ecommerce-replatforming",
     colSpan: "md:col-span-2",
     featured: true,
-    accentColor: "bg-primary"
+    accentColor: "bg-primary",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600"
   },
   {
     id: "02",
@@ -23,7 +24,8 @@ const projects = [
     slug: "fintech-app-interface",
     colSpan: "md:col-span-1",
     featured: false,
-    accentColor: "bg-primary-light"
+    accentColor: "bg-primary-light",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1600"
   },
   {
     id: "03",
@@ -33,7 +35,8 @@ const projects = [
     slug: "saas-growth-engine",
     colSpan: "md:col-span-1",
     featured: false,
-    accentColor: "bg-gray-800"
+    accentColor: "bg-gray-800",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600"
   }
 ];
 
@@ -114,18 +117,21 @@ export function PortfolioPreviewSection() {
               {/* Image / Visual Placeholder Wrapper */}
               <div className={`relative w-full rounded-2xl overflow-hidden ${project.featured ? 'h-[400px] lg:h-[600px]' : 'h-[350px] lg:h-[450px]'} bg-gray-100`}>
                 
-                {/* Simulated Image Placeholder */}
-                <div className={`absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105 ${project.accentColor}`}>
-                  {/* Decorative Wireframe Elements inside Placeholder */}
-                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-                  
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center opacity-80 mix-blend-overlay">
-                    <svg className="w-16 h-16 text-white mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-white font-mono text-sm tracking-widest uppercase">Project Preview</span>
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                ) : (
+                  <div className={`absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105 ${project.accentColor}`}>
+                    {/* Decorative Wireframe Elements inside Placeholder */}
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+                    
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center opacity-80 mix-blend-overlay">
+                      <svg className="w-16 h-16 text-white mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-white font-mono text-sm tracking-widest uppercase">Project Preview</span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500 z-10 mix-blend-multiply" />
