@@ -1,0 +1,87 @@
+export const portfolioData = [
+  {
+    id: 1,
+    title: "E-Commerce Experience",
+    category: "Web Development",
+    slug: "e-commerce-experience",
+    description: "An e-commerce concept focused on a clean shopping experience, responsive design, and a streamlined product journey.",
+    services: ["Web Development", "UI/UX", "SEO"],
+    challenge: "Create a clear and modern digital storefront that makes product discovery simple and intuitive for a broad demographic.",
+    approach: "Focused on visual hierarchy, responsive layouts, and a streamlined browsing experience without unnecessary friction.",
+    solution: "Designed a structured e-commerce experience with clear navigation, optimized filtering, and conversion-focused interfaces.",
+    outcome: "For this demo concept, the focus is on usability, visual clarity, and scalable design architecture.",
+    // Abstract design properties for the placeholder visual
+    placeholderColors: "bg-primary text-white",
+    placeholderType: "wireframe" // indicates it should draw a wireframe layout
+  },
+  {
+    id: 2,
+    title: "Digital Agency",
+    category: "UI/UX",
+    slug: "digital-agency-concept",
+    description: "A premium agency portfolio concept demonstrating advanced typographic hierarchy and editorial layouts.",
+    services: ["UI/UX", "Branding"],
+    challenge: "Establish a bold, authoritative digital presence that relies strictly on typography rather than stock imagery.",
+    approach: "Explored asymmetrical grid systems and high-contrast color palettes to emphasize content delivery.",
+    solution: "A minimal, highly structured interface prioritizing readability and seamless content transitions.",
+    outcome: "This concept highlights how restraint and structural discipline can yield a premium digital aesthetic.",
+    placeholderColors: "bg-gray-900 text-gray-100",
+    placeholderType: "typography"
+  },
+  {
+    id: 3,
+    title: "Local Business Platform",
+    category: "SEO",
+    slug: "local-business-platform",
+    description: "A conceptual strategy for maximizing local search visibility through structured data and optimized content.",
+    services: ["SEO", "Content Marketing"],
+    challenge: "Improve regional search presence and ensure core service offerings are easily discoverable by local intent queries.",
+    approach: "Developed a comprehensive on-page strategy focusing on technical structure, local schema, and clear service taxonomy.",
+    solution: "A well-architected content map prioritizing speed, semantic HTML, and localized landing pages.",
+    outcome: "This strategy model demonstrates foundational best practices for increasing targeted organic traffic.",
+    placeholderColors: "bg-cta text-white",
+    placeholderType: "chart"
+  },
+  {
+    id: 4,
+    title: "Creative Brand",
+    category: "Branding",
+    slug: "creative-brand-identity",
+    description: "A comprehensive digital brand identity concept focused on modern typography and cohesive visual language.",
+    services: ["Branding", "UI/UX"],
+    challenge: "Translate an abstract conceptual brand into a concrete, usable digital design system.",
+    approach: "Established core brand pillars before developing a scalable component library and typography scale.",
+    solution: "A unified digital brand book complete with versatile design tokens and structural guidelines.",
+    outcome: "This conceptual exercise showcases the importance of strict visual consistency across digital touchpoints.",
+    placeholderColors: "bg-primary-light text-white",
+    placeholderType: "typography"
+  },
+  {
+    id: 5,
+    title: "Modern Business",
+    category: "Web Development",
+    slug: "modern-business-corporate",
+    description: "A corporate website concept designed to clearly communicate complex B2B service offerings.",
+    services: ["Web Development", "SEO", "Digital Marketing"],
+    challenge: "Organize dense, highly technical B2B information into a scannable and engaging user experience.",
+    approach: "Prioritized modular content blocks, allowing users to dive deep into specifics only when requested.",
+    solution: "A professional, fast-loading architecture that guides stakeholders directly to relevant case studies and contact points.",
+    outcome: "This concept illustrates our approach to solving complex information architecture challenges.",
+    placeholderColors: "bg-gray-100 text-primary",
+    placeholderType: "wireframe"
+  },
+  {
+    id: 6,
+    title: "Fashion Commerce",
+    category: "Digital Marketing",
+    slug: "fashion-commerce-campaign",
+    description: "A theoretical digital marketing campaign framework for an emerging luxury lifestyle brand.",
+    services: ["Digital Marketing", "Content Marketing"],
+    challenge: "Engineer a multi-channel campaign strategy to capture high-intent audiences without aggressive sales tactics.",
+    approach: "Focused on high-quality editorial content, subtle retargeting, and brand-aligned social strategies.",
+    solution: "A cohesive marketing calendar emphasizing brand storytelling over direct-response urgency.",
+    outcome: "This strategic model represents how we align marketing efforts with premium brand positioning.",
+    placeholderColors: "bg-gray-800 text-white",
+    placeholderType: "chart"
+  }
+];

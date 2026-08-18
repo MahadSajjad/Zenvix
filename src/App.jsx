@@ -7,6 +7,9 @@ import { AnimatePresence } from 'framer-motion';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
+import { Portfolio } from './pages/Portfolio';
+import { CaseStudy } from './pages/CaseStudy';
+import { Team } from './pages/Team';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { PageTransition } from './components/common/PageTransition';
 
@@ -20,6 +23,9 @@ function AppRoutes() {
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+        <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
+        <Route path="/portfolio/:slug" element={<PageTransition><CaseStudy /></PageTransition>} />
+        <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
         {/* Future routes can be added here */}
       </Routes>
     </AnimatePresence>
