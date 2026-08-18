@@ -5,8 +5,19 @@ import { FiArrowRight } from 'react-icons/fi';
 
 // A helper to generate premium abstract visuals based on placeholderType
 const renderPlaceholderVisual = (project) => {
-  const { placeholderColors, placeholderType, title } = project;
+  const { placeholderColors, placeholderType, title, image } = project;
   
+  if (image) {
+    return (
+      <img 
+        src={image} 
+        alt={title} 
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+
   return (
     <div className={`w-full h-full relative overflow-hidden flex items-center justify-center p-8 ${placeholderColors}`}>
       {/* Concept Label */}

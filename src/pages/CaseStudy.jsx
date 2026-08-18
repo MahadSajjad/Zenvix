@@ -65,30 +65,40 @@ export function CaseStudy() {
         </Container>
       </header>
 
-      {/* FEATURED VISUAL PLACEHOLDER */}
+      {/* FEATURED VISUAL */}
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-16 -mt-8 lg:-mt-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className={`w-full aspect-[16/9] lg:aspect-[21/9] rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-center ${project.placeholderColors}`}
+          className={`w-full aspect-[16/9] lg:aspect-[21/9] rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-center ${!project.image ? project.placeholderColors : 'bg-gray-100'}`}
         >
-          {/* Abstract representation based on type to keep it premium without fake screenshots */}
-          <div className="absolute top-8 left-8 z-20">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-current opacity-70">
-              Concept Project Visual
-            </span>
-          </div>
-          
-          <div className="text-center opacity-30">
-            <span className="text-5xl md:text-8xl font-bold tracking-tighter block mb-4">
-              {project.title.split(' ')[0]}
-            </span>
-            <div className="w-32 h-1 bg-current mx-auto mb-4 opacity-50" />
-            <span className="text-2xl md:text-4xl font-light italic">
-              Zenvix Structural Demo
-            </span>
-          </div>
+          {project.image ? (
+            <img 
+              src={project.image} 
+              alt={`${project.title} Case Study`} 
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <>
+              {/* Abstract representation fallback */}
+              <div className="absolute top-8 left-8 z-20">
+                <span className="text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-current opacity-70">
+                  Concept Project Visual
+                </span>
+              </div>
+              
+              <div className="text-center opacity-30">
+                <span className="text-5xl md:text-8xl font-bold tracking-tighter block mb-4">
+                  {project.title.split(' ')[0]}
+                </span>
+                <div className="w-32 h-1 bg-current mx-auto mb-4 opacity-50" />
+                <span className="text-2xl md:text-4xl font-light italic">
+                  Zenvix Structural Demo
+                </span>
+              </div>
+            </>
+          )}
         </motion.div>
       </div>
 

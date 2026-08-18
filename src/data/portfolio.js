@@ -10,9 +10,9 @@ export const portfolioData = [
     approach: "Focused on visual hierarchy, responsive layouts, and a streamlined browsing experience without unnecessary friction.",
     solution: "Designed a structured e-commerce experience with clear navigation, optimized filtering, and conversion-focused interfaces.",
     outcome: "For this demo concept, the focus is on usability, visual clarity, and scalable design architecture.",
-    // Abstract design properties for the placeholder visual
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-primary text-white",
-    placeholderType: "wireframe" // indicates it should draw a wireframe layout
+    placeholderType: "wireframe"
   },
   {
     id: 2,
@@ -25,6 +25,7 @@ export const portfolioData = [
     approach: "Explored asymmetrical grid systems and high-contrast color palettes to emphasize content delivery.",
     solution: "A minimal, highly structured interface prioritizing readability and seamless content transitions.",
     outcome: "This concept highlights how restraint and structural discipline can yield a premium digital aesthetic.",
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-gray-900 text-gray-100",
     placeholderType: "typography"
   },
@@ -39,6 +40,7 @@ export const portfolioData = [
     approach: "Developed a comprehensive on-page strategy focusing on technical structure, local schema, and clear service taxonomy.",
     solution: "A well-architected content map prioritizing speed, semantic HTML, and localized landing pages.",
     outcome: "This strategy model demonstrates foundational best practices for increasing targeted organic traffic.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-cta text-white",
     placeholderType: "chart"
   },
@@ -53,6 +55,7 @@ export const portfolioData = [
     approach: "Established core brand pillars before developing a scalable component library and typography scale.",
     solution: "A unified digital brand book complete with versatile design tokens and structural guidelines.",
     outcome: "This conceptual exercise showcases the importance of strict visual consistency across digital touchpoints.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-primary-light text-white",
     placeholderType: "typography"
   },
@@ -67,6 +70,7 @@ export const portfolioData = [
     approach: "Prioritized modular content blocks, allowing users to dive deep into specifics only when requested.",
     solution: "A professional, fast-loading architecture that guides stakeholders directly to relevant case studies and contact points.",
     outcome: "This concept illustrates our approach to solving complex information architecture challenges.",
+    image: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-gray-100 text-primary",
     placeholderType: "wireframe"
   },
@@ -81,6 +85,7 @@ export const portfolioData = [
     approach: "Focused on high-quality editorial content, subtle retargeting, and brand-aligned social strategies.",
     solution: "A cohesive marketing calendar emphasizing brand storytelling over direct-response urgency.",
     outcome: "This strategic model represents how we align marketing efforts with premium brand positioning.",
+    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=1600",
     placeholderColors: "bg-gray-800 text-white",
     placeholderType: "chart"
   }
