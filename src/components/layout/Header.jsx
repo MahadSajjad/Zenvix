@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 const links = [
@@ -16,8 +17,6 @@ const links = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isHome = typeof window !== 'undefined' && window.location.pathname === '/';
-  const displayLinks = links.filter(link => !(isHome && link.name === 'Home'));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,25 +45,25 @@ export function Header() {
             }`}
         >
           {/* Logo */}
-          <a
-            href="/"
+          <Link
+            to="/"
             className="text-2xl font-bold text-primary tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-opacity hover:opacity-80"
             aria-label="Zenvix Home"
           >
             Zenvix<span className="text-cta">.</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {displayLinks.map((link) => (
-              <a
+            {links.map((link) => (
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="text-[14px] font-medium text-gray-700 hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm relative group py-1"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary/30 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -102,7 +101,7 @@ export function Header() {
           >
             <div className="flex flex-col min-h-[100dvh] pt-28 px-6 pb-6">
               <nav className="flex flex-col gap-6 mt-4">
-                {displayLinks.map((link, i) => (
+                {links.map((link, i) => (
                   <motion.div
                     key={link.name}
                     initial={{ opacity: 0, x: -20 }}
@@ -110,13 +109,13 @@ export function Header() {
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ delay: i * 0.05, duration: 0.3, ease: 'easeOut' }}
                   >
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-3xl font-semibold text-primary hover:text-cta transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md inline-block w-full"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </motion.div>
                 ))}
               </nav>
@@ -125,7 +124,7 @@ export function Header() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                transition={{ delay: displayLinks.length * 0.05, duration: 0.3 }}
+                transition={{ delay: links.length * 0.05, duration: 0.3 }}
                 className="mt-auto pt-12 pb-8 md:hidden shrink-0"
               >
                 <Button variant="primary" className="w-full py-4 text-lg">

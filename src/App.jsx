@@ -2,13 +2,29 @@ import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
-import { HeroSection } from './sections/HeroSection';
-import { ServicesSection } from './sections/ServicesSection';
-import { PortfolioPreviewSection } from './sections/PortfolioPreviewSection';
-import { AboutPreviewSection } from './sections/AboutPreviewSection';
-import { ProcessSection } from './sections/ProcessSection';
-import { FAQSection } from './sections/FAQSection';
-import { ContactPreviewSection } from './sections/ContactPreviewSection';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Services } from './pages/Services';
+import { ScrollToTop } from './components/common/ScrollToTop';
+import { PageTransition } from './components/common/PageTransition';
+
+// We need a wrapper component to use useLocation inside the Router
+function AppRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+        {/* Future routes can be added here */}
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   useEffect(() => {
@@ -19,19 +35,16 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        <HeroSection />
-        <ServicesSection />
-        <PortfolioPreviewSection />
-        <AboutPreviewSection />
-        <ProcessSection />
-        <FAQSection />
-        <ContactPreviewSection />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow flex flex-col">
+          <AppRoutes />
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

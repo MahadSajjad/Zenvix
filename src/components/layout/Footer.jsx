@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaTiktok, FaLinkedinIn } from 'react-icons/fa';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
@@ -12,11 +13,15 @@ const footerLinks = {
     { name: 'Contact', href: '/contact' },
   ],
   services: [
-    { name: 'SEO', href: '/services/seo' },
-    { name: 'Link Building', href: '/services/link-building' },
-    { name: 'Content Marketing', href: '/services/content-marketing' },
-    { name: 'PPC', href: '/services/ppc' },
-    { name: 'Social Media Marketing', href: '/services/social-media' },
+    { name: 'Web Development', href: '/services' },
+    { name: 'On-Page SEO', href: '/services' },
+    { name: 'Off-Page SEO', href: '/services' },
+    { name: 'Content Marketing', href: '/services' },
+    { name: 'Social Media Marketing', href: '/services' },
+    { name: 'Keyword Research', href: '/services' },
+    { name: 'UI/UX Designing', href: '/services' },
+    { name: 'Graphic Designing', href: '/services' },
+    { name: 'Guest Posting & Link Building', href: '/services' },
   ],
   resources: [
     { name: 'Blog', href: '/blog' },
@@ -41,12 +46,12 @@ export function Footer() {
         >
           {/* Brand Info */}
           <div className="lg:col-span-2 sm:pr-8 flex flex-col h-full">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="inline-block text-3xl font-bold tracking-tight mb-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm hover:opacity-90 transition-opacity w-fit"
             >
               Zenvix<span className="text-cta">.</span>
-            </a>
+            </Link>
             <p className="text-white/80 hover:text-white transition-colors duration-500 max-w-sm text-[15px] leading-relaxed mb-6">
               A premium digital agency crafting sophisticated digital experiences and driving measurable business growth.
             </p>
@@ -75,12 +80,12 @@ export function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/80 hover:text-white transition-colors duration-500 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm inline-block"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -91,12 +96,12 @@ export function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/80 hover:text-white transition-colors duration-500 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm inline-block"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -107,12 +112,12 @@ export function Footer() {
             <ul className="flex flex-col gap-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/80 hover:text-white transition-colors duration-500 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm inline-block"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -133,12 +138,12 @@ export function Footer() {
           <ul className="flex flex-wrap justify-center gap-6">
             {footerLinks.legal.map((link) => (
               <li key={link.name}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="text-white/80 hover:text-white transition-colors duration-500 text-[15px] focus:outline-none focus-visible:ring-2 focus-visible:ring-cta rounded-sm py-0.5 inline-block"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
