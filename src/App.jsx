@@ -12,6 +12,8 @@ import { CaseStudy } from './pages/CaseStudy';
 import { Team } from './pages/Team';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { FAQ } from './pages/FAQ';
+import { Contact } from './pages/Contact';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { PageTransition } from './components/common/PageTransition';
 
@@ -30,6 +32,8 @@ function AppRoutes() {
         <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
         <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
         <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         {/* Future routes can be added here */}
       </Routes>
     </AnimatePresence>
