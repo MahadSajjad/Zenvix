@@ -50,9 +50,6 @@ export function ContactPreviewSection() {
 
     setIsSubmitting(true);
 
-    // Map service IDs back to service names for the backend if needed,
-    // actually our form stores IDs in `service` array. Let's send names so validation passes.
-    // The existing validation checks against: 'Under $500', etc.
     const selectedServices = formState.service.map(id => {
       const s = services.find(srv => srv.id === id);
       return s ? s.title : id;
