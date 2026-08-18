@@ -45,13 +45,13 @@ export function Header() {
             }`}
         >
           {/* Logo */}
-          <Link
-            to="/"
+          <a
+            href="/"
             className="text-2xl font-bold text-primary tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-opacity hover:opacity-80"
             aria-label="Zenvix Home"
           >
             Zenvix<span className="text-cta">.</span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
