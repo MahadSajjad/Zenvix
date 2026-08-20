@@ -123,12 +123,20 @@ export function ContactPreviewSection() {
               </p>
 
               {/* Optional Contact Info */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 mt-8">
                 <div className="flex flex-col">
                   <span className="text-sm text-primary-light font-medium mb-1">Email Us</span>
                   <a href="mailto:info@zenvix.net" className="text-white text-lg hover:text-cta transition-colors duration-300">
                     info@zenvix.net
                   </a>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm text-primary-light font-medium mb-1">Visit Us</span>
+                  <address className="not-italic text-white text-lg leading-relaxed">
+                    A.Z plaza 2nd floor office # 9<br/>
+                    opposite Alfatah, Kohinoor city<br/>
+                    Faisalabad
+                  </address>
                 </div>
               </div>
             </motion.div>

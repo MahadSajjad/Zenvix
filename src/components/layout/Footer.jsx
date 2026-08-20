@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaFacebookF, FaLinkedinIn, FaEnvelope, FaTwitter } from 'react-icons/fa';
 import { Container } from '../ui/Container';
 import { useServices } from '../../hooks/useServices';
 
@@ -43,14 +43,19 @@ export function Footer() {
             >
               Zenvix<span className="text-cta">.</span>
             </Link>
-            <p className="text-white/80 hover:text-white transition-colors duration-500 max-w-sm text-[15px] leading-relaxed mb-6">
+            <p className="text-white/80 hover:text-white transition-colors duration-500 max-w-sm text-[15px] leading-relaxed mb-4">
               A premium digital agency crafting sophisticated digital experiences and driving measurable business growth.
             </p>
+            <address className="not-italic text-white/80 max-w-sm text-[14px] leading-relaxed mb-6">
+              A.Z plaza 2nd floor office # 9<br />
+              opposite Alfatah, Kohinoor city<br />
+              Faisalabad
+            </address>
             <div className="flex flex-wrap items-center gap-3 mt-auto">
               <a href={`https://wa.me/+923156360381?text=Hello%2C%20I'm%20interested%20in%20your%20services%20and%20would%20like%20to%20know%20more.`} target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="WhatsApp">
                 <FaWhatsapp size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Instagram">
+              <a href="https://www.instagram.com/zenvix._net" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Instagram">
                 <FaInstagram size={16} />
               </a>
               <a href="https://www.facebook.com/share/1DWFtgGAPk/?mibextid=wwXIfr" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Facebook">
@@ -58,6 +63,9 @@ export function Footer() {
               </a>
               <a href="https://www.linkedin.com/company/zenvix-seo/" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="LinkedIn">
                 <FaLinkedinIn size={16} />
+              </a>
+              <a href="https://x.com/Zenvix_net" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="X">
+                <FaTwitter size={16} />
               </a>
               <a href="mailto:info@zenvix.net" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Email">
                 <FaEnvelope size={16} />
