@@ -47,7 +47,7 @@ export const termsData = {
       content: [
         {
           type: "paragraph",
-          text: "Payment schedules are agreed upon between Zenvix and the client before work begins and may vary depending on the project's scope. Typically, this involves an initial deposit to secure resources, followed by milestone payments or a final payment upon completion, as defined in the project agreement."
+          text: "Payment schedules are agreed upon between Zenvix and the client before work begins and may vary depending on the project's scope. Typically, this involves a 40% initial deposit to secure resources, followed by milestone payments or a final payment upon completion, as defined in the project agreement."
         }
       ]
     },
