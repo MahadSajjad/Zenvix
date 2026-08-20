@@ -53,7 +53,7 @@ export function Footer() {
               <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Instagram">
                 <FaInstagram size={16} />
               </a>
-              <a href="https://www.facebook.com/zenvixseo" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1DWFtgGAPk/?mibextid=wwXIfr" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="Facebook">
                 <FaFacebookF size={16} />
               </a>
               <a href="https://www.linkedin.com/company/zenvix-seo/" target='_blank' rel='noopener noreferrer' className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-cta hover:text-white transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-cta" aria-label="LinkedIn">
