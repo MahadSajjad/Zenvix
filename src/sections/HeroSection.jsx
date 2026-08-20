@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 function MagneticCard({ children, className, depth = 15 }) {
   const ref = useRef(null);
@@ -132,7 +133,9 @@ export function HeroSection() {
             {/* Desktop CTA (Hidden on mobile) */}
             <motion.div variants={itemVariants} className="hidden lg:flex flex-row items-center gap-4">
               <Button variant="outline" className="px-8 py-4 text-[15px]">
-                About Zenvix
+                <Link to="/about">
+                  About Zenvix
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -217,7 +220,9 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row lg:hidden items-center gap-4 w-full order-3 mt-0"
           >
             <Button variant="outline" className="w-full sm:w-auto px-8 py-4 text-[15px]">
-              About Zenvix
+              <Link to="/about">
+                About Zenvix
+              </Link>
             </Button>
           </motion.div>
 

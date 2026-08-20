@@ -38,6 +38,7 @@ export function normalizePortfolioProject(wpProject) {
     solution: wpProject.acf?.solution || '',
     outcome: wpProject.acf?.outcome || '',
     image: imageUrl,
+    link: wpProject.acf?.link || '',
     // Provide safe defaults for the abstract placeholders if image is missing
     placeholderColors: wpProject.acf?.placeholderColors || "bg-primary text-white",
     placeholderType: wpProject.acf?.placeholderType || "wireframe"

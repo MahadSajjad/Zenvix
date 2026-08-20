@@ -67,6 +67,11 @@ export function PortfolioCard({ project, index }) {
   // Determine layout based on index for the asymmetrical grid
   const isLarge = index === 0 || index === 3;
 
+  const Wrapper = project.link ? 'a' : Link;
+  const linkProps = project.link 
+    ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+    : { to: `/portfolio/${project.slug}` };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -75,7 +80,7 @@ export function PortfolioCard({ project, index }) {
       transition={{ duration: 0.6, delay: 0.1 }}
       className={`group flex flex-col ${isLarge ? 'md:col-span-2' : 'md:col-span-1'}`}
     >
-      <Link to={`/portfolio/${project.slug}`} className="block relative w-full overflow-hidden rounded-2xl mb-6 bg-gray-100 aspect-[4/3] sm:aspect-[16/9]">
+      <Wrapper {...linkProps} className="block relative w-full overflow-hidden rounded-2xl mb-6 bg-gray-100 aspect-[4/3] sm:aspect-[16/9]">
         <motion.div 
           className="w-full h-full"
           whileHover={{ scale: 1.03 }}
@@ -83,7 +88,7 @@ export function PortfolioCard({ project, index }) {
         >
           {renderPlaceholderVisual(project)}
         </motion.div>
-      </Link>
+      </Wrapper>
       
       <div className="flex flex-col flex-grow">
         <div className="flex items-center gap-3 mb-4">
@@ -93,11 +98,11 @@ export function PortfolioCard({ project, index }) {
           </span>
         </div>
         
-        <Link to={`/portfolio/${project.slug}`} className="group-hover:text-primary transition-colors">
+        <Wrapper {...linkProps} className="group-hover:text-primary transition-colors">
           <h3 className={`font-bold text-primary tracking-tight mb-3 ${isLarge ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>
             {project.title}
           </h3>
-        </Link>
+        </Wrapper>
         
         <p className="text-gray-600 leading-relaxed mb-6 max-w-xl">
           {project.description}
@@ -112,13 +117,13 @@ export function PortfolioCard({ project, index }) {
             ))}
           </ul>
           
-          <Link 
-            to={`/portfolio/${project.slug}`} 
+          <Wrapper 
+            {...linkProps}
             className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-cta transition-colors group/link shrink-0"
           >
-            View Case Study
+            {project.link ? 'Visit Website' : 'View Case Study'}
             <FiArrowRight className="group-hover/link:translate-x-1 transition-transform" />
-          </Link>
+          </Wrapper>
         </div>
       </div>
     </motion.div>
