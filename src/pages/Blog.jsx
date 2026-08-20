@@ -6,6 +6,7 @@ import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
 import { useBlog } from '../hooks/useBlog';
+import { Loader } from '../components/ui/Loader';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -14,7 +15,7 @@ const fadeIn = {
 };
 
 export function Blog() {
-  const { posts } = useBlog();
+  const { posts, loading } = useBlog();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", ...new Set(posts.map(p => p.category))];
@@ -55,7 +56,7 @@ export function Blog() {
       </section>
 
       {/* SECTION 2 — FEATURED POST */}
-      {featuredPost && activeCategory === "All" && (
+      {!loading && featuredPost && activeCategory === "All" && (
         <section className="w-full pb-16 lg:pb-24">
           <Container>
             <motion.div
@@ -144,7 +145,9 @@ export function Blog() {
         <Container>
           <div className="max-w-5xl mx-auto">
             <AnimatePresence mode="popLayout">
-              {cataloguePosts.length > 0 ? (
+              {loading ? (
+                <Loader text="Loading insights..." />
+              ) : cataloguePosts.length > 0 ? (
                 <div className="flex flex-col">
                   {cataloguePosts.map((post) => (
                     <BlogCard key={post.id} post={post} />

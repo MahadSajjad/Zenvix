@@ -6,6 +6,7 @@ import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { PortfolioCard } from '../components/ui/PortfolioCard';
 import { usePortfolio } from '../hooks/usePortfolio';
+import { Loader } from '../components/ui/Loader';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },

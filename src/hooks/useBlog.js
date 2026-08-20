@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getPosts } from '../services/wordpress';
-import { blogData as staticBlog } from '../data/blog';
 
 export function useBlog() {
-  // Start with static blog as fallback for instant rendering
-  const [posts, setPosts] = useState(staticBlog);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,19 +14,17 @@ export function useBlog() {
         const wpPosts = await getPosts();
         
         if (isMounted) {
-          if (wpPosts && wpPosts.length > 0) {
+          if (wpPosts) {
             setPosts(wpPosts);
           } else {
-            console.warn('[useBlog] WordPress returned empty posts. Using static fallback.');
+            setPosts([]);
           }
           setLoading(false);
         }
       } catch (err) {
         if (isMounted) {
-          console.warn('[useBlog] Failed to fetch posts from WordPress. Using static fallback.', err.message);
           setError(err);
           setLoading(false);
-          // posts state remains as staticBlog
         }
       }
     }

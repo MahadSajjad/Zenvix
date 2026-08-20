@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getPortfolio } from '../services/wordpress';
-import { portfolioData as staticPortfolio } from '../data/portfolio';
 
 export function usePortfolio() {
-  // Start with static portfolio as fallback for instant rendering
-  const [portfolio, setPortfolio] = useState(staticPortfolio);
+  const [portfolio, setPortfolio] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,19 +14,17 @@ export function usePortfolio() {
         const wpPortfolio = await getPortfolio();
         
         if (isMounted) {
-          if (wpPortfolio && wpPortfolio.length > 0) {
+          if (wpPortfolio) {
             setPortfolio(wpPortfolio);
           } else {
-            console.warn('[usePortfolio] WordPress returned empty portfolio. Using static fallback.');
+            setPortfolio([]);
           }
           setLoading(false);
         }
       } catch (err) {
         if (isMounted) {
-          console.warn('[usePortfolio] Failed to fetch portfolio from WordPress. Using static fallback.', err.message);
           setError(err);
           setLoading(false);
-          // portfolio state remains as staticPortfolio
         }
       }
     }

@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getServices } from '../services/wordpress';
-import { services as staticServices } from '../data/services';
 
 export function useServices() {
-  // Start with static services as fallback for instant rendering
-  const [services, setServices] = useState(staticServices);
+  const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,19 +14,17 @@ export function useServices() {
         const wpServices = await getServices();
         
         if (isMounted) {
-          if (wpServices && wpServices.length > 0) {
+          if (wpServices) {
             setServices(wpServices);
           } else {
-            console.warn('[useServices] WordPress returned empty services. Using static fallback.');
+            setServices([]);
           }
           setLoading(false);
         }
       } catch (err) {
         if (isMounted) {
-          console.warn('[useServices] Failed to fetch services from WordPress. Using static fallback.', err.message);
           setError(err);
           setLoading(false);
-          // services state remains as staticServices
         }
       }
     }
