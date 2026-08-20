@@ -7,6 +7,7 @@ import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { BlogCard, renderBlogPlaceholderVisual } from '../components/ui/BlogCard';
 import { useBlog } from '../hooks/useBlog';
+import { Loader } from '../components/ui/Loader';
 
 // Helper to render the structured JSON content model safely
 const renderContentBlock = (block, index) => {
@@ -29,8 +30,16 @@ const renderContentBlock = (block, index) => {
 
 export function BlogPost() {
   const { slug } = useParams();
-  const { posts } = useBlog();
+  const { posts, loading } = useBlog();
   const post = posts.find(p => p.slug === slug);
+
+  if (loading) {
+    return (
+      <div className="flex-grow flex items-center justify-center py-32 bg-white min-h-screen">
+        <Loader text="Loading article..." />
+      </div>
+    );
+  }
 
   // 404 State
   if (!post) {

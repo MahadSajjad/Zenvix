@@ -15,7 +15,7 @@ const fadeIn = {
 };
 
 export function Portfolio() {
-  const { portfolio } = usePortfolio();
+  const { portfolio, loading } = usePortfolio();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", ...new Set(portfolio.map(p => p.category))];
@@ -76,18 +76,22 @@ export function Portfolio() {
       <section className="w-full py-16 lg:py-24 bg-white min-h-[50vh]">
         <Container>
           <AnimatePresence mode="popLayout">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-              {filteredProjects.map((project, index) => (
-                <PortfolioCard 
-                  key={project.id} 
-                  project={project} 
-                  index={index} 
-                />
-              ))}
-            </div>
+            {loading ? (
+              <Loader text="Loading portfolio..." />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+                {filteredProjects.map((project, index) => (
+                  <PortfolioCard 
+                    key={project.id} 
+                    project={project} 
+                    index={index} 
+                  />
+                ))}
+              </div>
+            )}
           </AnimatePresence>
           
-          {filteredProjects.length === 0 && (
+          {!loading && filteredProjects.length === 0 && (
             <div className="py-20 text-center">
               <p className="text-xl text-gray-500">No conceptual projects found for this category.</p>
               <button 

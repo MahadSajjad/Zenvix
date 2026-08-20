@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
+import { Loader } from '../components/ui/Loader';
 import { usePortfolio } from '../hooks/usePortfolio';
 
 export function PortfolioPreviewSection() {
-  const { portfolio } = usePortfolio();
+  const { portfolio, loading } = usePortfolio();
 
   // Create layout metadata for the first 3 projects to preserve the masonry-like grid
   const displayProjects = useMemo(() => {
@@ -95,14 +96,17 @@ export function PortfolioPreviewSection() {
         </div>
 
         {/* Portfolio Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
-        >
-          {displayProjects.map((project) => (
+        {loading ? (
+          <Loader text="Loading featured work..." />
+        ) : (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+          >
+            {displayProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -217,7 +221,8 @@ export function PortfolioPreviewSection() {
               )}
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        )}
 
         {/* Mobile CTA */}
         <div className="mt-12 lg:hidden w-full flex justify-center">

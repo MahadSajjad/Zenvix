@@ -6,10 +6,11 @@ import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { usePortfolio } from '../hooks/usePortfolio';
+import { Loader } from '../components/ui/Loader';
 
 export function CaseStudy() {
   const { slug } = useParams();
-  const { portfolio } = usePortfolio();
+  const { portfolio, loading } = usePortfolio();
   const project = portfolio.find(p => p.slug === slug);
 
   const fadeIn = {
@@ -17,6 +18,14 @@ export function CaseStudy() {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6, ease: "easeOut" }
   };
+
+  if (loading) {
+    return (
+      <div className="flex-grow flex items-center justify-center py-32 bg-white min-h-[70vh]">
+        <Loader text="Loading case study..." />
+      </div>
+    );
+  }
 
   // 404 State
   if (!project) {

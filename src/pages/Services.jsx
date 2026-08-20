@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
 import { useServices } from '../hooks/useServices';
+import { Loader } from '../components/ui/Loader';
+
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -15,7 +17,7 @@ const fadeIn = {
 };
 
 export function Services() {
-  const { services: servicesData } = useServices();
+  const { services: servicesData, loading } = useServices();
   return (
     <>
       {/* SECTION 1 — SERVICES HERO */}
@@ -46,55 +48,59 @@ export function Services() {
       <section className="w-full pb-20 lg:pb-32 bg-white">
         <Container>
           <div className="flex flex-col border-t border-gray-200">
-            {servicesData.map((service, idx) => (
-              <motion.div
-                key={service.id}
-                id={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex flex-col lg:flex-row py-12 lg:py-16 border-b border-gray-200 gap-8 lg:gap-16 group scroll-mt-24"
-              >
-                {/* Number & Title */}
-                <div className="lg:w-1/3 flex flex-col">
-                  <span className="text-5xl font-bold text-gray-200 tracking-tighter mb-4 group-hover:text-cta transition-colors duration-500">
-                    {service.number}
-                  </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-primary tracking-tight">
-                    {service.title}
-                  </h2>
-                </div>
-
-                {/* Details */}
-                <div className="lg:w-2/3 flex flex-col lg:flex-row gap-8 lg:gap-16">
-                  <div className="lg:w-1/2 flex flex-col">
-                    <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-                    <Link to="/contact" className="inline-flex items-center gap-2 text-primary font-bold hover:text-cta transition-colors w-fit mt-auto group/link">
-                      Inquire about {service.title}
-                      <FiArrowRight className="group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
+            {loading ? (
+              <Loader text="Loading services..." />
+            ) : (
+              servicesData.map((service, idx) => (
+                <motion.div
+                  key={service.id}
+                  id={service.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="flex flex-col lg:flex-row py-12 lg:py-16 border-b border-gray-200 gap-8 lg:gap-16 group scroll-mt-24"
+                >
+                  {/* Number & Title */}
+                  <div className="lg:w-1/3 flex flex-col">
+                    <span className="text-5xl font-bold text-gray-200 tracking-tighter mb-4 group-hover:text-cta transition-colors duration-500">
+                      {service.number}
+                    </span>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-primary tracking-tight">
+                      {service.title}
+                    </h2>
                   </div>
 
-                  {/* Capabilities List */}
-                  <div className="lg:w-1/2">
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6">
-                      Key Deliverables
-                    </h3>
-                    <ul className="flex flex-col gap-3">
-                      {service.capabilities.map((cap, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary-light mt-2 shrink-0" />
-                          <span className="text-gray-700 font-medium leading-relaxed">{cap}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Details */}
+                  <div className="lg:w-2/3 flex flex-col lg:flex-row gap-8 lg:gap-16">
+                    <div className="lg:w-1/2 flex flex-col">
+                      <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                        {service.description}
+                      </p>
+                      <Link to="/contact" className="inline-flex items-center gap-2 text-primary font-bold hover:text-cta transition-colors w-fit mt-auto group/link">
+                        Inquire about {service.title}
+                        <FiArrowRight className="group-hover/link:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+
+                    {/* Capabilities List */}
+                    <div className="lg:w-1/2">
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6">
+                        Key Deliverables
+                      </h3>
+                      <ul className="flex flex-col gap-3">
+                        {service.capabilities.map((cap, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary-light mt-2 shrink-0" />
+                            <span className="text-gray-700 font-medium leading-relaxed">{cap}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))
+            )}
           </div>
         </Container>
       </section>

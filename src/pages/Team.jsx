@@ -6,6 +6,7 @@ import { GlobalCTA } from '../components/ui/GlobalCTA';
 import { Link } from 'react-router-dom';
 import { TeamMember } from '../components/ui/TeamMember';
 import { useTeam } from '../hooks/useTeam';
+import { Loader } from '../components/ui/Loader';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -15,7 +16,7 @@ const fadeIn = {
 };
 
 export function Team() {
-  const { team: teamData } = useTeam();
+  const { team: teamData, loading } = useTeam();
   return (
     <>
       {/* SECTION 1 — TEAM HERO */}
@@ -76,7 +77,9 @@ export function Team() {
             <h2 className="text-4xl font-bold text-primary tracking-tight mb-4">Meet the Zenvix Team</h2>
           </motion.div>
 
-          {teamData && teamData.length > 0 ? (
+          {loading ? (
+            <Loader text="Loading team profiles..." />
+          ) : teamData && teamData.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {teamData.map((member, index) => (
                 <TeamMember 
