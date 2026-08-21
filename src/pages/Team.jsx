@@ -30,11 +30,11 @@ export function Team() {
                   The Team
                 </span>
               </div>
-              
+
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] tracking-tight mb-8">
                 The people behind the work.
               </h1>
-              
+
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
                 We believe that premium digital experiences are born from the intersection of strategy, design, technology, and collaborative thinking.
               </p>
@@ -48,18 +48,18 @@ export function Team() {
         <Container>
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
             <div className="lg:w-1/3">
-              <motion.h2 
+              <motion.h2
                 {...fadeIn}
                 className="text-3xl lg:text-4xl font-bold text-primary tracking-tight"
               >
                 Our Philosophy
               </motion.h2>
             </div>
-            
+
             <div className="lg:w-2/3">
               <motion.div {...fadeIn} className="prose prose-lg text-gray-600 max-w-3xl">
                 <p>
-                  At Zenvix, we don't operate in silos. Every digital solution we engineer is the result of shared responsibility and rigorous collaboration across multiple disciplines. 
+                  At Zenvix, we don't operate in silos. Every digital solution we engineer is the result of shared responsibility and rigorous collaboration across multiple disciplines.
                 </p>
                 <p className="mt-4">
                   By bringing together diverse perspectives from strategic planning, creative direction, and technical architecture, we ensure that every project is conceptually sound, visually striking, and technologically robust.
@@ -82,16 +82,16 @@ export function Team() {
           ) : teamData && teamData.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
               {teamData.map((member, index) => (
-                <TeamMember 
-                  key={member.id} 
-                  member={member} 
-                  isFeatured={index === 0} 
+                <TeamMember
+                  key={member.id}
+                  member={member}
+                  isFeatured={index === 0}
                 />
               ))}
             </div>
           ) : (
             /* Premium Empty State Presentation */
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,15 +100,12 @@ export function Team() {
             >
               {/* Abstract decorative element */}
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
-              
+
               <div className="relative z-10 text-center max-w-2xl">
                 <div className="w-16 h-1 bg-cta mx-auto mb-8" />
                 <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
                   Team profiles will be introduced here as the agency grows.
                 </h3>
-                <p className="text-white/70 text-lg md:text-xl font-light">
-                  Structural architecture is ready for future CMS integration.
-                </p>
               </div>
             </motion.div>
           )}
@@ -146,7 +143,7 @@ export function Team() {
                 desc: "The entire team reviews the output, rigorously testing and polishing before final deployment."
               }
             ].map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={step.num}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
