@@ -21,21 +21,33 @@ export function normalizeTeamMember(wpMember) {
 
   // Extract social links if available in ACF
   const socialLinks = {};
-  if (wpMember.acf?.linkedin) socialLinks.linkedin = wpMember.acf.linkedin;
-  if (wpMember.acf?.twitter) socialLinks.twitter = wpMember.acf.twitter;
-  if (wpMember.acf?.github) socialLinks.github = wpMember.acf.github;
-  if (wpMember.acf?.facebook) socialLinks.facebook = wpMember.acf.facebook;
-  if (wpMember.acf?.instagram) socialLinks.instagram = wpMember.acf.instagram;
+  if (wpMember.acf?.linkedin_url || wpMember.acf?.linkedin) socialLinks.linkedin = wpMember.acf?.linkedin_url || wpMember.acf?.linkedin;
+  if (wpMember.acf?.twitter_url || wpMember.acf?.twitter) socialLinks.twitter = wpMember.acf?.twitter_url || wpMember.acf?.twitter;
+  if (wpMember.acf?.github_url || wpMember.acf?.github) socialLinks.github = wpMember.acf?.github_url || wpMember.acf?.github;
+  if (wpMember.acf?.facebook_url || wpMember.acf?.facebook) socialLinks.facebook = wpMember.acf?.facebook_url || wpMember.acf?.facebook;
+  if (wpMember.acf?.instagram_url || wpMember.acf?.instagram) socialLinks.instagram = wpMember.acf?.instagram_url || wpMember.acf?.instagram;
+  
+  if (wpMember.acf?.portfolio_url || wpMember.acf?.portfolio) {
+    socialLinks.portfolio = wpMember.acf?.portfolio_url || wpMember.acf?.portfolio;
+  } else if (wpMember.slug === 'mahad-sajjad' || wpMember.title?.rendered === 'Mahad Sajjad') {
+    socialLinks.portfolio = 'https://mahadsajjad.vercel.app';
+  }
+
+  // Strip empty HTML tags from rendered content for fallback bio
+  let rawContent = wpMember.content?.rendered || '';
+  if (rawContent.replace(/<[^>]+>/g, '').trim() === '') {
+    rawContent = '';
+  }
 
   return {
     id: wpMember.slug || wpMember.id,
     wpId: wpMember.id,
     name: wpMember.title?.rendered || '',
     role: wpMember.acf?.role || '',
-    bio: wpMember.acf?.bio || wpMember.content?.rendered || '',
+    bio: wpMember.acf?.short_bio || wpMember.acf?.bio || rawContent || '',
     image: imageUrl,
     socialLinks,
-    order: parseInt(wpMember.acf?.team_order, 10) || 99,
+    order: parseInt(wpMember.acf?.display_order || wpMember.acf?.team_order, 10) || 99,
   };
 }
 

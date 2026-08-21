@@ -7,7 +7,7 @@ export function normalizePortfolioProject(wpProject) {
   if (!wpProject) return null;
 
   // Parse services if they are newline separated
-  const rawServices = wpProject.acf?.services || '';
+  const rawServices = wpProject.acf?.services_used || wpProject.acf?.services || '';
   const servicesArray = typeof rawServices === 'string'
     ? rawServices.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
     : (Array.isArray(rawServices) ? rawServices : []);
@@ -25,13 +25,20 @@ export function normalizePortfolioProject(wpProject) {
       : wpProject.acf.image.url; // In case ACF returns an image object
   }
 
+  // Strip empty HTML tags from rendered content for fallback description
+  let rawContent = wpProject.content?.rendered || '';
+  // Simple regex to remove tags if it's just empty blocks like <p></p>
+  if (rawContent.replace(/<[^>]+>/g, '').trim() === '') {
+    rawContent = '';
+  }
+
   return {
     id: wpProject.slug || wpProject.id, // Prefer slug as id to match frontend routing/keys
     wpId: wpProject.id,
     title: wpProject.title?.rendered || '',
     slug: wpProject.slug,
-    category: wpProject.acf?.category || 'Uncategorized',
-    description: wpProject.acf?.description || wpProject.content?.rendered || '',
+    category: wpProject.acf?.project_category || wpProject.acf?.category || 'Uncategorized',
+    description: wpProject.acf?.short_description || wpProject.acf?.description || rawContent || '',
     services: servicesArray,
     challenge: wpProject.acf?.challenge || '',
     approach: wpProject.acf?.approach || '',

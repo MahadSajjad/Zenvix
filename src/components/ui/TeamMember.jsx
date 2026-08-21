@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedinIn, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaLinkedinIn, FaTwitter, FaGithub, FaGlobe } from 'react-icons/fa';
 
 export function TeamMember({ member, isFeatured }) {
   return (
@@ -58,6 +58,11 @@ export function TeamMember({ member, isFeatured }) {
             {member.socialLinks.github && (
               <a href={member.socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors p-2" aria-label={`${member.name} GitHub`}>
                 <FaGithub size={18} />
+              </a>
+            )}
+            {member.socialLinks.portfolio && (
+              <a href={member.socialLinks.portfolio} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors p-2" aria-label={`${member.name} Portfolio`}>
+                <FaGlobe size={18} />
               </a>
             )}
           </div>
