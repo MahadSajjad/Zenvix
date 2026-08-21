@@ -16,7 +16,17 @@ export function normalizePortfolioProject(wpProject) {
   // 1. Try _embedded if ?_embed=1 was used
   let imageUrl = null;
   if (wpProject._embedded && wpProject._embedded['wp:featuredmedia'] && wpProject._embedded['wp:featuredmedia'][0]) {
-    imageUrl = wpProject._embedded['wp:featuredmedia'][0].source_url;
+    const media = wpProject._embedded['wp:featuredmedia'][0];
+    const sizes = media.media_details?.sizes;
+    
+    // Prefer large or medium_large for speed, fallback to original
+    if (sizes?.large) {
+      imageUrl = sizes.large.source_url;
+    } else if (sizes?.medium_large) {
+      imageUrl = sizes.medium_large.source_url;
+    } else {
+      imageUrl = media.source_url;
+    }
   } 
   // 2. Try ACF image if provided
   else if (wpProject.acf?.image) {

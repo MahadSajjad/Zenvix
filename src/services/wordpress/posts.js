@@ -37,7 +37,17 @@ export function normalizePost(wpPost) {
   // Determine image URL
   let imageUrl = null;
   if (wpPost._embedded && wpPost._embedded['wp:featuredmedia'] && wpPost._embedded['wp:featuredmedia'][0]) {
-    imageUrl = wpPost._embedded['wp:featuredmedia'][0].source_url;
+    const media = wpPost._embedded['wp:featuredmedia'][0];
+    const sizes = media.media_details?.sizes;
+    
+    // Prefer large or medium_large for speed, fallback to original
+    if (sizes?.large) {
+      imageUrl = sizes.large.source_url;
+    } else if (sizes?.medium_large) {
+      imageUrl = sizes.medium_large.source_url;
+    } else {
+      imageUrl = media.source_url;
+    }
   } else if (wpPost.acf?.image) {
     imageUrl = typeof wpPost.acf.image === 'string' ? wpPost.acf.image : wpPost.acf.image.url;
   }

@@ -10,7 +10,17 @@ export function normalizeTeamMember(wpMember) {
   // 1. Try _embedded if ?_embed=1 was used
   let imageUrl = null;
   if (wpMember._embedded && wpMember._embedded['wp:featuredmedia'] && wpMember._embedded['wp:featuredmedia'][0]) {
-    imageUrl = wpMember._embedded['wp:featuredmedia'][0].source_url;
+    const media = wpMember._embedded['wp:featuredmedia'][0];
+    const sizes = media.media_details?.sizes;
+    
+    // Prefer large or medium_large for speed, fallback to original
+    if (sizes?.large) {
+      imageUrl = sizes.large.source_url;
+    } else if (sizes?.medium_large) {
+      imageUrl = sizes.medium_large.source_url;
+    } else {
+      imageUrl = media.source_url;
+    }
   } 
   // 2. Try ACF image if provided
   else if (wpMember.acf?.image) {
