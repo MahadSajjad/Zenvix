@@ -10,9 +10,9 @@ export function TeamMember({ member, isFeatured }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.6 }}
-      className={`group flex flex-col ${isFeatured ? 'md:col-span-2 lg:col-span-3' : 'md:col-span-1'}`}
+      className={`group flex ${isFeatured ? 'flex-col md:flex-row md:items-center gap-8 md:col-span-2 lg:col-span-3' : 'flex-col md:col-span-1'}`}
     >
-      <div className={`relative w-full overflow-hidden rounded-2xl mb-6 bg-gray-100 ${isFeatured ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-square sm:aspect-[4/5]'}`}>
+      <div className={`relative overflow-hidden rounded-2xl mb-6 md:mb-0 bg-gray-100 ${isFeatured ? 'w-full md:w-1/2 lg:w-2/5 aspect-[16/9] sm:aspect-square md:aspect-[4/5]' : 'w-full aspect-square sm:aspect-[4/5]'}`}>
         <motion.div
           className="w-full h-full bg-gray-200"
           whileHover={{ scale: 1.03 }}
@@ -33,7 +33,7 @@ export function TeamMember({ member, isFeatured }) {
         </motion.div>
       </div>
 
-      <div className="flex flex-col flex-grow">
+      <div className={`flex flex-col flex-grow ${isFeatured ? 'md:w-1/2 lg:w-3/5' : ''}`}>
         <h3 className={`font-bold text-primary tracking-tight mb-1 ${isFeatured ? 'text-3xl' : 'text-xl'}`}>
           <div className='flex flex-row justify-between'>
             {member.name}
