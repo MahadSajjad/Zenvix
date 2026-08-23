@@ -42,12 +42,12 @@ export function TeamMember({ member, isFeatured }) {
         <p className="text-cta font-medium text-sm tracking-wide mb-4 uppercase">
           {member.role}
         </p>
-        <p className="text-gray-600 leading-relaxed mb-6 max-w-xl">
+        <p className="text-gray-600 leading-relaxed mb-2 max-w-xl">
           {member.bio}
         </p>
 
         {member.socialLinks && (
-          <div className="mt-auto flex gap-4 pt-4 border-t border-gray-100">
+          <div className="mt-auto flex gap-4 pt-1">
             {member.socialLinks.linkedin && (
               <a href={member.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors p-2 -ml-2" aria-label={`${member.name} LinkedIn`}>
                 <FaLinkedinIn size={18} />

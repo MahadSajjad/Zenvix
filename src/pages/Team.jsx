@@ -1,9 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '../components/ui/Container';
-import { Button } from '../components/ui/Button';
 import { GlobalCTA } from '../components/ui/GlobalCTA';
-import { Link } from 'react-router-dom';
 import { TeamMember } from '../components/ui/TeamMember';
 import { useTeam } from '../hooks/useTeam';
 import { Loader } from '../components/ui/Loader';
