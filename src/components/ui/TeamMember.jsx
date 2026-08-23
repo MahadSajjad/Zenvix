@@ -12,7 +12,7 @@ export function TeamMember({ member, isFeatured }) {
       transition={{ duration: 0.6 }}
       className={`group flex ${isFeatured ? 'flex-col md:flex-row md:items-center gap-8 md:col-span-2 lg:col-span-3' : 'flex-col md:col-span-1'}`}
     >
-      <div className={`relative overflow-hidden rounded-2xl mb-6 md:mb-0 bg-gray-100 ${isFeatured ? 'w-full md:w-1/2 lg:w-2/5 aspect-[16/9] sm:aspect-square md:aspect-[4/5]' : 'w-full aspect-square sm:aspect-[4/5]'}`}>
+      <div className={`relative overflow-hidden rounded-2xl mb-6 md:mb-0 bg-gray-100 ${isFeatured ? 'w-full md:w-1/2 lg:w-2/5 aspect-square md:aspect-[3/4]' : 'w-full aspect-[3/4]'}`}>
         <motion.div
           className="w-full h-full bg-gray-200"
           whileHover={{ scale: 1.03 }}
@@ -22,7 +22,7 @@ export function TeamMember({ member, isFeatured }) {
             <img
               src={member.image}
               alt={`${member.name} - ${member.role}`}
-              className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              className="w-full h-full object-cover object-top grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
               loading="lazy"
             />
           ) : (
@@ -35,15 +35,8 @@ export function TeamMember({ member, isFeatured }) {
 
       <div className={`flex flex-col flex-grow ${isFeatured ? 'md:w-1/2 lg:w-3/5' : ''}`}>
         <h3 className={`font-bold text-primary tracking-tight mb-1 ${isFeatured ? 'text-3xl' : 'text-xl'}`}>
-          <div className='flex flex-row justify-between'>
+          <div className='flex flex-row justify-start'>
             {member.name}
-            {member.socialLinks.portfolio && (
-              <a href={member.socialLinks.portfolio} title="View Portfolio" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors pt-1" aria-label={`${member.name} Portfolio`}>
-                <span className='flex justify-center gap-1 text-sm md:text-md'>
-                  View Portfolio <FiArrowRight className="group-hover:translate-x-1 transition-transform mt-1.5" />
-                </span>
-              </a>
-            )}
           </div>
         </h3>
         <p className="text-cta font-medium text-sm tracking-wide mb-4 uppercase">

@@ -39,8 +39,6 @@ export function normalizeTeamMember(wpMember) {
   
   if (wpMember.acf?.portfolio_url || wpMember.acf?.portfolio) {
     socialLinks.portfolio = wpMember.acf?.portfolio_url || wpMember.acf?.portfolio;
-  } else if (wpMember.slug === 'mahad-sajjad' || wpMember.title?.rendered === 'Mahad Sajjad') {
-    socialLinks.portfolio = 'https://mahadsajjad.vercel.app';
   }
 
   // Strip empty HTML tags from rendered content for fallback bio
