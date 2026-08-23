@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const links = [
   { name: 'Home', href: '/' },
@@ -69,6 +70,16 @@ export function Header() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4 xl:gap-6">
+            <a
+              href="https://wa.me/923156360381"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center text-black hover:text-green-600 transition-colors p-2 -mr-2 md:-mr-0"
+              aria-label="Contact on WhatsApp"
+            >
+              <FaWhatsapp size={28} />
+            </a>
+
             <Link to="/contact" className="hidden md:inline-flex">
               <Button variant="primary" className="text-[14px] px-6 py-2.5 shadow-sm hover:shadow-md">
                 Let's Talk
