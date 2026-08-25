@@ -45,5 +45,37 @@ export const teamData = [
     bio: "Engineering sophisticated, highly scalable technical foundations across web and mobile platforms.",
     image: null,
     socialLinks: {}
+  },
+  {
+    id: 5,
+    name: "Momin Ali",
+    role: "Link building & outreach specialist",
+    bio: "Specializing in building high-quality backlink profiles and executing strategic outreach campaigns to enhance domain authority and organic visibility.",
+    image: null,
+    socialLinks: {}
+  },
+  {
+    id: 6,
+    name: "Afnan Rashid",
+    role: "Seo on page & outreach specialist",
+    bio: "Driving on-page optimization strategies and targeted outreach to maximize search engine rankings and improve user engagement.",
+    image: null,
+    socialLinks: {}
+  },
+  {
+    id: 7,
+    name: "Subhan Mather",
+    role: "Seo off page & graphic designing specialist",
+    bio: "Combining creative graphic design with effective off-page SEO techniques to build compelling brand narratives and drive external authority.",
+    image: null,
+    socialLinks: {}
+  },
+  {
+    id: 8,
+    name: "Hassan Asghar",
+    role: "Search engine optimization specialist",
+    bio: "Executing comprehensive SEO strategies across technical, on-page, and off-page initiatives to ensure maximum search visibility and sustainable growth.",
+    image: null,
+    socialLinks: {}
   }
 ];
